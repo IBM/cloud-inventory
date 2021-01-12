@@ -9,12 +9,12 @@ import {
   HeaderMenu,
   HeaderMenuItem,
 } from "carbon-components-react/lib/components/UIShell";
+import SideBar from "../SideBar";
 
 const MyHeader = ({ accounts = [] }) => {
   const [currentAccount, setCurrentAccount] = useState(
     accounts.length === 0 ? "Select an Account" : accounts[0].name
   );
-
   return (
     <div className="container">
       <Header aria-label="IBM Platform Name">
@@ -50,6 +50,7 @@ const MyHeader = ({ accounts = [] }) => {
             <AppSwitcher20 />
           </HeaderGlobalAction>
         </HeaderGlobalBar>
+        <SideBar />
       </Header>
     </div>
   );

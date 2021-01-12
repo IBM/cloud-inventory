@@ -19,7 +19,8 @@ import {
   TableSelectRow,
   Button,
 } from "carbon-components-react";
-import { Delete16, Save16, Download16 } from "@carbon/icons-react";
+import { Download16 } from "@carbon/icons-react";
+
 const MyTable = () => {
   const headerData = [
     {
@@ -122,20 +123,6 @@ const MyTable = () => {
             <TableBatchActions {...getBatchActionProps()}>
               <TableBatchAction
                 tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
-                renderIcon={Delete16}
-                onClick={() => console.log("clicked")}
-              >
-                Delete
-              </TableBatchAction>
-              <TableBatchAction
-                tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
-                renderIcon={Save16}
-                onClick={() => console.log("clicked")}
-              >
-                Save
-              </TableBatchAction>
-              <TableBatchAction
-                tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
                 renderIcon={Download16}
                 onClick={() => console.log("clicked")}
               >
@@ -169,7 +156,7 @@ const MyTable = () => {
                 size="small"
                 kind="primary"
               >
-                Add new
+                Reload Table
               </Button>
             </TableToolbarContent>
           </TableToolbar>

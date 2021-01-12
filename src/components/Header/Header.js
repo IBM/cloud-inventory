@@ -1,6 +1,4 @@
-import React from "react";
-import Search20 from "@carbon/icons-react/lib/search/20";
-import Notification20 from "@carbon/icons-react/lib/notification/20";
+import React, { useState } from "react";
 import AppSwitcher20 from "@carbon/icons-react/lib/app-switcher/20";
 import {
   Header,
@@ -12,30 +10,42 @@ import {
   HeaderMenuItem,
 } from "carbon-components-react/lib/components/UIShell";
 
-const MyHeader = () => {
+const MyHeader = ({ accounts = [] }) => {
+  const [currentAccount, setCurrentAccount] = useState(
+    accounts.length === 0 ? "Select an Account" : accounts[0].name
+  );
+
   return (
     <div className="container">
       <Header aria-label="IBM Platform Name">
-        <HeaderName href="#" prefix="IBM">
-          [Platform]
+        <HeaderName href="#" prefix="Cloud">
+          Inventory
         </HeaderName>
-        <HeaderNavigation aria-label="IBM [Platform]">
-          <HeaderMenuItem href="#">Link 1</HeaderMenuItem>
-          <HeaderMenuItem href="#">Link 2</HeaderMenuItem>
-          <HeaderMenuItem href="#">Link 3</HeaderMenuItem>
-          <HeaderMenu aria-label="Link 4" menuLinkName="Link 4">
-            <HeaderMenuItem href="#">Sub-link 1</HeaderMenuItem>
-            <HeaderMenuItem href="#">Sub-link 2</HeaderMenuItem>
-            <HeaderMenuItem href="#">Sub-link 3</HeaderMenuItem>
+        <HeaderNavigation aria-label="Header Links">
+          <HeaderMenu
+            aria-label="Current Account"
+            menuLinkName={currentAccount}
+          >
+            {accounts.length === 0 ? (
+              <HeaderMenuItem href="#">Added an Account</HeaderMenuItem>
+            ) : (
+              accounts.map(function (account, index) {
+                return (
+                  <HeaderMenuItem
+                    key={index}
+                    href="#"
+                    onClick={(e) => {
+                      setCurrentAccount(e.target.outerText);
+                    }}
+                  >
+                    {account.name}
+                  </HeaderMenuItem>
+                );
+              })
+            )}
           </HeaderMenu>
         </HeaderNavigation>
         <HeaderGlobalBar>
-          <HeaderGlobalAction aria-label="Search" onClick={() => {}}>
-            <Search20 />
-          </HeaderGlobalAction>
-          <HeaderGlobalAction aria-label="Notifications" onClick={() => {}}>
-            <Notification20 />
-          </HeaderGlobalAction>
           <HeaderGlobalAction aria-label="App Switcher" onClick={() => {}}>
             <AppSwitcher20 />
           </HeaderGlobalAction>

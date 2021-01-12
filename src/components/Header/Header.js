@@ -11,7 +11,7 @@ import {
   HeaderMenu,
   HeaderMenuItem,
 } from "carbon-components-react/lib/components/UIShell";
-
+import SideBar from "../SideBar";
 const MyHeader = () => {
   return (
     <div className="container">
@@ -40,6 +40,7 @@ const MyHeader = () => {
             <AppSwitcher20 />
           </HeaderGlobalAction>
         </HeaderGlobalBar>
+        <SideBar />
       </Header>
     </div>
   );

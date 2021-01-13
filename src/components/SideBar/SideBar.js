@@ -26,15 +26,12 @@ const SideBar = ({ isSideNavExpanded }) => {
           <SideNavMenuItem href="javascript:void(0)">Link</SideNavMenuItem>
         </SideNavMenu>
         */}
-        <Link to="/">
-          <SideNavLink renderIcon={QueryQueue32}>All Resourses</SideNavLink>
-        </Link>
-        <SideNavLink renderIcon={Archive32}>Bare Metal Server</SideNavLink>
         <Link to="/vsi/classic">
           <SideNavLink renderIcon={VirtualMachine32}>
             Virtual Server for Classic
           </SideNavLink>
         </Link>
+        <SideNavLink renderIcon={Archive32}>Bare Metal Server</SideNavLink>
         <SideNavLink renderIcon={Vpn32}>Virtual Private Network</SideNavLink>
         <SideNavLink renderIcon={ObjectStorage32}>Object Storage</SideNavLink>
       </SideNavItems>

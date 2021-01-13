@@ -21,31 +21,32 @@ const MyHeader = ({ accounts = [] }) => {
         <HeaderName href="#" prefix="Cloud">
           Inventory
         </HeaderName>
-        <HeaderNavigation aria-label="Header Links">
-          <HeaderMenu
-            aria-label="Current Account"
-            menuLinkName={currentAccount}
-          >
-            {accounts.length === 0 ? (
-              <HeaderMenuItem href="#">Added an Account</HeaderMenuItem>
-            ) : (
-              accounts.map(function (account, index) {
-                return (
-                  <HeaderMenuItem
-                    key={index}
-                    href="#"
-                    onClick={(e) => {
-                      setCurrentAccount(e.target.outerText);
-                    }}
-                  >
-                    {account.name}
-                  </HeaderMenuItem>
-                );
-              })
-            )}
-          </HeaderMenu>
-        </HeaderNavigation>
+
         <HeaderGlobalBar>
+          <HeaderNavigation aria-label="Header Links">
+            <HeaderMenu
+              aria-label="Current Account"
+              menuLinkName={currentAccount}
+            >
+              {accounts.length === 0 ? (
+                <HeaderMenuItem href="#">Added an Account</HeaderMenuItem>
+              ) : (
+                accounts.map(function (account, index) {
+                  return (
+                    <HeaderMenuItem
+                      key={index}
+                      href="#"
+                      onClick={(e) => {
+                        setCurrentAccount(e.target.outerText);
+                      }}
+                    >
+                      {account.name}
+                    </HeaderMenuItem>
+                  );
+                })
+              )}
+            </HeaderMenu>
+          </HeaderNavigation>
           <HeaderGlobalAction aria-label="App Switcher" onClick={() => {}}>
             <AppSwitcher20 />
           </HeaderGlobalAction>

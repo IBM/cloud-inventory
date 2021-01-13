@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   SideNav,
   SideNavItems,
@@ -25,21 +26,17 @@ const SideBar = ({ isSideNavExpanded }) => {
           <SideNavMenuItem href="javascript:void(0)">Link</SideNavMenuItem>
         </SideNavMenu>
         */}
-        <SideNavLink renderIcon={QueryQueue32} href="javascript:void(0)">
-          All Resourses
-        </SideNavLink>
-        <SideNavLink renderIcon={Archive32} href="javascript:void(0)">
-          Bare Metal Server
-        </SideNavLink>
-        <SideNavLink renderIcon={VirtualMachine32} href="javascript:void(0)">
-          Virtual Server for Classic
-        </SideNavLink>
-        <SideNavLink renderIcon={Vpn32} href="javascript:void(0)">
-          Virtual Private Network
-        </SideNavLink>
-        <SideNavLink renderIcon={ObjectStorage32} href="javascript:void(0)">
-          Object Storage
-        </SideNavLink>
+        <Link to="/">
+          <SideNavLink renderIcon={QueryQueue32}>All Resourses</SideNavLink>
+        </Link>
+        <SideNavLink renderIcon={Archive32}>Bare Metal Server</SideNavLink>
+        <Link to="/vsi/classic">
+          <SideNavLink renderIcon={VirtualMachine32}>
+            Virtual Server for Classic
+          </SideNavLink>
+        </Link>
+        <SideNavLink renderIcon={Vpn32}>Virtual Private Network</SideNavLink>
+        <SideNavLink renderIcon={ObjectStorage32}>Object Storage</SideNavLink>
       </SideNavItems>
     </SideNav>
   );

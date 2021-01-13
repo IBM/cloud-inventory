@@ -18,7 +18,9 @@ main {
 
 .bx--content {
   padding: 0;
-  margin-top: 2.5rem;
-  margin-left: 2.5rem;
-  background-color: red;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  //padding: 0.5rem;
+  min-height: calc(100vh - 50px);
+  background-color: $ui-01;
 }

@@ -1,11 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { HashRouter as Route } from "react-router-dom";
+
+import "./index.scss";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Route>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Route>,
+  document.getElementById("root")
 );

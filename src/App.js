@@ -5,6 +5,7 @@ import "./App.scss";
 
 import Header from "./components/Header";
 
+import Home from "./pages/Home";
 import VirtualServerClassic from "./pages/VirtualServerClassic";
 
 const App = () => {
@@ -13,7 +14,7 @@ const App = () => {
       <Header />
       <Content>
         <Switch>
-          <Route exact path="/" />
+          <Route exact path="/" component={Home} />
           <Route path="/vsi/classic" component={VirtualServerClassic} />
         </Switch>
       </Content>

@@ -9,7 +9,6 @@ import {
   VirtualMachine32,
   Vpn32,
   ObjectStorage32,
-  QueryQueue32,
   Archive32,
 } from "@carbon/icons-react";
 
@@ -31,9 +30,10 @@ const SideBar = ({ isSideNavExpanded }) => {
             Virtual Server for Classic
           </SideNavLink>
         </Link>
+        {/*
         <SideNavLink renderIcon={Archive32}>Bare Metal Server</SideNavLink>
         <SideNavLink renderIcon={Vpn32}>Virtual Private Network</SideNavLink>
-        <SideNavLink renderIcon={ObjectStorage32}>Object Storage</SideNavLink>
+        <SideNavLink renderIcon={ObjectStorage32}>Object Storage</SideNavLink> */}
       </SideNavItems>
     </SideNav>
   );

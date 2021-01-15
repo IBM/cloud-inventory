@@ -22,6 +22,7 @@ const MyHeader = ({ accounts = [] }) => {
           Inventory
         </HeaderName>
 
+        {/*
         <HeaderGlobalBar>
           <HeaderNavigation aria-label="Header Links">
             <HeaderMenu
@@ -29,7 +30,7 @@ const MyHeader = ({ accounts = [] }) => {
               menuLinkName={currentAccount}
             >
               {accounts.length === 0 ? (
-                <HeaderMenuItem href="#">Added an Account</HeaderMenuItem>
+                <HeaderMenuItem>Added an Account</HeaderMenuItem>
               ) : (
                 accounts.map(function (account, index) {
                   return (
@@ -51,6 +52,7 @@ const MyHeader = ({ accounts = [] }) => {
             <AppSwitcher20 />
           </HeaderGlobalAction>
         </HeaderGlobalBar>
+        */}
         <SideBar />
       </Header>
     </div>

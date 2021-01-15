@@ -1,96 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Table from "../../components/Table";
+import { DataTableSkeleton } from "carbon-components-react";
+import Headers from "./tableHeader";
+
+const { ipcRenderer } = window.require("electron");
 
 const VirtualServerClassic = () => {
-  const Headers = [
-    {
-      header: "Name",
-      key: "name",
-    },
-    {
-      header: "Protocol",
-      key: "protocol",
-    },
-    {
-      header: "Port",
-      key: "port",
-    },
-    {
-      header: "Rule",
-      key: "rule",
-    },
-    {
-      header: "Attached Groups",
-      key: "attached_groups",
-    },
-    {
-      header: "Status",
-      key: "status",
-    },
-  ];
+  const [rows, setRows] = useState([]);
+  const [loadingTable, setLoadingTable] = useState(true);
 
-  const Rows = [
-    {
-      attached_groups: "Kevins VM Groups",
-      id: "a",
-      name: "Load Balancer 3",
-      port: 3000,
-      protocol: "HTTP",
-      rule: "Round robin",
-      status: "Disabled",
-    },
-    {
-      attached_groups: "Maureens VM Groups",
-      id: "b",
-      name: "Load Balancer 1",
-      port: 443,
-      protocol: "HTTP",
-      rule: "Round robin",
-      status: "Starting",
-    },
-    {
-      attached_groups: "Andrews VM Groups",
-      id: "c",
-      name: "Load Balancer 2",
-      port: 80,
-      protocol: "HTTP",
-      rule: "DNS delegation",
-      status: "Active",
-    },
-    {
-      attached_groups: "Marcs VM Groups",
-      id: "d",
-      name: "Load Balancer 6",
-      port: 3000,
-      protocol: "HTTP",
-      rule: "Round robin",
-      status: "Disabled",
-    },
-    {
-      attached_groups: "Mels VM Groups",
-      id: "e",
-      name: "Load Balancer 4",
-      port: 443,
-      protocol: "HTTP",
-      rule: "Round robin",
-      status: "Starting",
-    },
-    {
-      attached_groups: "Ronjas VM Groups",
-      id: "f",
-      name: "Load Balancer 5",
-      port: 80,
-      protocol: "HTTP",
-      rule: "DNS delegation",
-      status: "Active",
-    },
-  ];
+  useEffect(() => {
+    ipcRenderer.send(
+      "virtual-server-classic:requestApi",
+      "Requesting Classic Virtual Server data from API"
+    );
+  }, []);
+
+  ipcRenderer.on("virtual-server-classic:loading-table", (event, arg) => {
+    console.log(arg);
+    setLoadingTable(true);
+  });
+
+  ipcRenderer.on("virtual-server-classic:receiving-data", (event, arg) => {
+    setRows(arg);
+    setLoadingTable(false);
+  });
+
   return (
-    <Table
-      title="Virtual Server for Classic"
-      headerData={Headers}
-      rowData={Rows}
-    />
+    <>
+      {!loadingTable && (
+        <Table
+          title="Virtual Server for Classic"
+          headerData={Headers}
+          rowData={rows}
+          eventNameRequest="virtual-server-classic:requestApi"
+          eventNameLoading="virtual-server-classic:loading-table"
+        />
+      )}
+      {loadingTable && <DataTableSkeleton headers={Headers} rowCount={11} />}
+    </>
   );
 };
 

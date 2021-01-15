@@ -15,10 +15,18 @@ import {
   TableToolbarAction,
   Button,
 } from "carbon-components-react";
+const { ipcRenderer } = window.require("electron");
 
-const MyTable = ({ title, rowData, headerData }) => {
+const MyTable = ({
+  title,
+  rowData,
+  headerData,
+  eventNameRequest,
+  eventNameLoading,
+}) => {
   return (
     <DataTable rows={rowData} headers={headerData}>
+      {/* isSortable */}
       {({
         rows,
         headers,
@@ -52,7 +60,12 @@ const MyTable = ({ title, rowData, headerData }) => {
               </TableToolbarMenu>
               <Button
                 tabIndex={getBatchActionProps().shouldShowBatchActions ? -1 : 0}
-                onClick={() => console.log("clicked")}
+                onClick={() => {
+                  ipcRenderer.send(
+                    eventNameRequest,
+                    `Requesting Classic Virtual Server data from API$${eventNameLoading}`
+                  );
+                }}
                 size="small"
                 kind="primary"
               >

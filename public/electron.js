@@ -27,7 +27,7 @@ function createWindow() {
   });
 
   // Funcao para iniciar maximizado
-  mainWindow.maximize();
+  // mainWindow.maximize();
 
   mainWindow.loadURL(
     isDev

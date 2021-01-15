@@ -2,10 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   SideNav,
+  SideNavMenu,
+  SideNavMenuItem,
   SideNavItems,
   SideNavLink,
 } from "carbon-components-react/lib/components/UIShell";
 import {
+  Fade16,
   VirtualMachine32,
   Vpn32,
   ObjectStorage32,
@@ -16,20 +19,12 @@ const SideBar = ({ isSideNavExpanded }) => {
   return (
     <SideNav aria-label="Side navigation" isRail expanded={isSideNavExpanded}>
       <SideNavItems>
-        {/*
-        <SideNavMenu renderIcon={Fade16} title="Category title">
-          <SideNavMenuItem href="javascript:void(0)">Link</SideNavMenuItem>
-          <SideNavMenuItem aria-current="page" href="javascript:void(0)">
-            Link
-          </SideNavMenuItem>
-          <SideNavMenuItem href="javascript:void(0)">Link</SideNavMenuItem>
+        <SideNavMenu renderIcon={Fade16} title="Classic Infrastructure">
+	  <SideNavMenuItem href="javascript:void(0)">Classic Infrastructure</SideNavMenuItem>
+         <Link to="/vsi/classic">
+           <SideNavLink renderIcon={VirtualMachine32}>Virtual Server for Classic</SideNavLink>
+         </Link>
         </SideNavMenu>
-        */}
-        <Link to="/vsi/classic">
-          <SideNavLink renderIcon={VirtualMachine32}>
-            Virtual Server for Classic
-          </SideNavLink>
-        </Link>
         {/*
         <SideNavLink renderIcon={Archive32}>Bare Metal Server</SideNavLink>
         <SideNavLink renderIcon={Vpn32}>Virtual Private Network</SideNavLink>

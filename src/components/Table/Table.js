@@ -49,13 +49,10 @@ const MyTable = ({
                   primaryFocus
                   onClick={() => alert("Alert 1")}
                 >
-                  Action 1
+                  export to PDF
                 </TableToolbarAction>
                 <TableToolbarAction onClick={() => alert("Alert 2")}>
-                  Action 2
-                </TableToolbarAction>
-                <TableToolbarAction onClick={() => alert("Alert 3")}>
-                  Action 3
+                  export to Excel
                 </TableToolbarAction>
               </TableToolbarMenu>
               <Button

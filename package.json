@@ -1,9 +1,10 @@
 {
-  "name": "ibm-cloud-inventory",
+  "name": "cloud-inventory",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@carbon/icons-react": "10.22.0",
+    "axios": "^0.21.1",
     "carbon-components": "10.25.0",
     "carbon-components-react": "7.25.0",
     "carbon-icons": "7.0.7",
@@ -31,7 +32,7 @@
     "dev": "concurrently \"set BROWSER=none && yarn start\" \"wait-on http://localhost:3000 && electron public/electron.js\"",
     "postinstall": "electron-builder install-app-deps",
     "preelectron-build": "yarn build",
-    "electron-build": "electron-builder -wl"
+    "electron-build": "electron-builder -w"
   },
   "eslintConfig": {
     "extends": [
@@ -68,8 +69,8 @@
   "homepage": "./",
   "main": "public/electron.js",
   "build": {
-    "appId": "com.IBM-Cloud.Inventory",
-    "productName": "IBM Cloud - Inventory",
+    "appId": "com.Cloud.Inventory",
+    "productName": "Cloud Inventory",
     "copyright": "Copyright © 2021",
     "mac": {
       "category": "public.app-category.utilities"

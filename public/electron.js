@@ -1,11 +1,17 @@
 const electron = require("electron");
-
-const { app } = electron;
-const { BrowserWindow } = electron;
-
 const path = require("path");
 const isDev = require("electron-is-dev");
+const axios = require("axios");
+const { ipcMain, app, BrowserWindow } = electron;
 
+const api = axios.default.create({
+  baseURL: "https://api.softlayer.com/rest/v3.1/",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+global.share = { electron, ipcMain, api };
 let mainWindow;
 
 function createWindow() {
@@ -45,3 +51,5 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+require("./scripts/VirtualServerClassic");

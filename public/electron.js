@@ -16,12 +16,18 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
+    center: true,
     minWidth: 1280,
     minHeight: 720,
+    title: "Cloud Inventory",
+    autoHideMenuBar: "true",
     webPreferences: {
       nodeIntegration: true,
     },
   });
+
+  // Funcao para iniciar maximizado
+  mainWindow.maximize();
 
   mainWindow.loadURL(
     isDev

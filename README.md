@@ -9,7 +9,7 @@
 		<img src="https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg" alt="IBM Cloud">
     </a>
     <a href="https://www.python.org">
-		<img src="https://img.shields.io/badge/platform-python-lightgrey.svg?style=flat%22%20alt=%22platform">
+		<img src="https://img.shields.io/badge/platform-javascript-lightgrey.svg?style=flat%22%20alt=%22platform">
 	</a>
 	<a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
 		<img src="https://img.shields.io/badge/license-gpl3-blue.svg?style=flat" alt="GPL 3">
@@ -71,8 +71,8 @@ Project|Build Status
 ---|---
 Virtual Server for Classic|![](https://img.shields.io/badge/status-ready-brightgreen)
 Virtual Servers for VPC|![](https://img.shields.io/badge/status-under%20development-purple)
-Issues|![](https://img.shields.io/badge/issues-0-red)
 VPCs|![](https://img.shields.io/badge/status-under%20development-purple)
+Issues|![](https://img.shields.io/badge/issues-0-red)
 ---
 
 ## Creators

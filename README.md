@@ -14,7 +14,7 @@
 	<a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
 		<img src="https://img.shields.io/badge/license-gpl3-blue.svg?style=flat" alt="GPL 3">
 	</a>
-	<img src="https://img.shields.io/badge/prerelease-v0.1.0-red">
+	<img src="https://img.shields.io/badge/release-v0.1.0-alpha-red">
 </p>
 <p></p>
 <p align="center">
@@ -38,30 +38,12 @@
 
 
 ## Quick start
-<b><a href="https://ibm.box.com/s/koqehz7i5hyrtasi8pbnb9bujlr1xz2z"> Click here to see the video tutorial</a></b>
-1. Upload a spreadsheet;
-2. Select the type of spreadsheet. This type can be Generic or Bluepad;
-   - <b>If Generic, the spreadsheet must contain the following columns: "CPU", "Memória", "Datacenter", "SO", "QTD" and "Boot Disk"</b>
-   - Additionl fields: "Public"(
-Indicates whether the machine must have a public endpoint), "Disk1" (Additional Disk)
-    - the datacenter column must contain the datacenter code
-    - If the machine settings are not within the IBM Cloud standards, select yes on "As Is", this will convert the machines to VSI following some common rules. 
-    -  If Datacenter or SO is not available on the spreadsheet, this application will use the Datacenter and SO Standard selected on the interface. 
-    -  if the "apart disk" value = yes, the boot disk does not influence the total sum os disks. 
-    -  Choose the "Resource Type" to indicate if you have generic VM's, EC2 or Physical Machines.  
-    -  In "VSI type", select "IBM Public VSI" or "IBM Reserved VSI".
-3. After selecting the desired options, just click in "Price" and wait some minutes. At the end of processing, the processed file will be downloaded.
-
-<b>See the example worksheets(bpmini.xlsx and quotomationexample.xlsx). bpmini.xlsx is an example for Bluepad, and quotomationexample.xlsx is an example for a generic spreadsheet</b>
-
+1. Select your platform
+2. Downlod Cloud Inventory
+3. Install it
+4. Run
 
 ## Observations
-1. <b>When using quotomation with a generic spreadsheet, ensure that you are uploading a spreadsheet that contains only the machines that must be converted and priced. Also ensure that this spreadsheet does not have a header above the column names. </b>
-   <br>
-
-2. <b>Unfortunately, the file is not processed with formatting, that is, the processed file is returned without formatting. However, you only need to copy this returned values and paste into a formatted spreadsheet.</b>
-3. <b>By default, we are using "Flavor" like B1.CPUxRAMxBoot_Disk, so please, check if the flavor you are using in the spreadsheet follow this pattern (If the option "As Is" is false)</b>
-4. <b>If you are using Bluepad, upload only "VSIs" sheet, without header.</b>
 
 ## Features
 
@@ -70,7 +52,6 @@ Indicates whether the machine must have a public endpoint), "Disk1" (Additional 
 3.
 4.
 5. 
-
 
 
 

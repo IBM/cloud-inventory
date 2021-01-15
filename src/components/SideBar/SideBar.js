@@ -20,7 +20,6 @@ const SideBar = ({ isSideNavExpanded }) => {
     <SideNav aria-label="Side navigation" isRail expanded={isSideNavExpanded}>
       <SideNavItems>
         <SideNavMenu renderIcon={Fade16} title="Classic Infrastructure">
-	  <SideNavMenuItem href="javascript:void(0)">Classic Infrastructure</SideNavMenuItem>
          <Link to="/vsi/classic">
            <SideNavLink renderIcon={VirtualMachine32}>Virtual Server for Classic</SideNavLink>
          </Link>

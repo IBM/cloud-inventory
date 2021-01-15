@@ -14,7 +14,7 @@
 	<a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
 		<img src="https://img.shields.io/badge/license-gpl3-blue.svg?style=flat" alt="GPL 3">
 	</a>
-	<img src="https://img.shields.io/badge/release-v1.0-red">
+	<img src="https://img.shields.io/badge/prerelease-v0.1.0-red">
 </p>
 <p></p>
 <p align="center">

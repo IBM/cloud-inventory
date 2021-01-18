@@ -15,7 +15,7 @@ const App = () => {
       <Content>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/vsi/classic" component={VirtualServerClassic} />
+          <Route path="/classic/vsi" component={VirtualServerClassic} />
         </Switch>
       </Content>
     </div>

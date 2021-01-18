@@ -20,7 +20,7 @@ function createWindow() {
     minWidth: 1280,
     minHeight: 720,
     title: "Cloud Inventory",
-    autoHideMenuBar: "true",
+    autoHideMenuBar: isDev ? false : true,
     webPreferences: {
       nodeIntegration: true,
     },

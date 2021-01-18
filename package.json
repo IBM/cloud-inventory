@@ -32,10 +32,7 @@
     "dev": "concurrently \"set BROWSER=none && yarn start\" \"wait-on http://localhost:3000 && electron public/electron.js\"",
     "postinstall": "electron-builder install-app-deps",
     "preelectron-build": "yarn build",
-    "build-win": "electron-builder -w",
-    "build-linux": "electron-builder -l",
-    "build-mac": "electron-builder -m",
-    "electron-pack": "build --em.main=build/electron.js"
+    "electron-build": "electron-builder"
   },
   "eslintConfig": {
     "extends": [

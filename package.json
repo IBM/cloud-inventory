@@ -65,6 +65,10 @@
       "name": "Vinicius S. Almeida",
       "email": "vinicius.sebadelhe@gmail.com"
     }
+    {
+      "name": "Luis Falcao",
+      "email": "luis.falcao@gmail.com"
+    }
   ],
   "homepage": "./",
   "main": "public/electron.js",

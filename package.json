@@ -9,6 +9,7 @@
     "carbon-components-react": "7.25.0",
     "carbon-icons": "7.0.7",
     "electron-is-dev": "^1.2.0",
+    "ibm-vpc": "^0.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",

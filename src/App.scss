@@ -1,2 +1,11 @@
-@import "./components/Header/header";
-@import "./components/SideBar/sidebar";
+@import "carbon-components/scss/globals/scss/vendor/@carbon/type/scss/font-family.scss";
+@import "carbon-components/scss/globals/scss/vendor/@carbon/layout/scss/breakpoint.scss";
+@import "carbon-components/scss/globals/scss/typography.scss";
+@import "carbon-components/scss/globals/scss/vars.scss";
+
+@import "./components/Header/header.scss";
+@import "./components/SideBar/sidebar.scss";
+@import "./components/AccountTable/accountTable.scss";
+@import "./components/AccountForm/accountForm.scss";
+
+@import "./pages/Accounts/account.scss";

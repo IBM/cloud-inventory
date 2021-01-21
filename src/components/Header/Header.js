@@ -13,7 +13,19 @@ import { Link } from "react-router-dom";
 import SideBar from "../SideBar";
 
 const MyHeader = ({ accounts }) => {
-  const [currentAccount, setCurrentAccount] = useState("Select an Account");
+  const [currentAccount, setCurrentAccount] = useState("");
+
+  useEffect(() => {
+    const featchAccount = async () => {
+      const sessionAccount = JSON.parse(
+        sessionStorage.getItem("currentAccount")
+      );
+      setCurrentAccount(
+        sessionAccount ? sessionAccount.accountName : "Select an Account"
+      );
+    };
+    featchAccount();
+  });
 
   return (
     <div className="container">
@@ -35,7 +47,6 @@ const MyHeader = ({ accounts }) => {
                       key={index}
                       onClick={(e) => {
                         setCurrentAccount(e.target.outerText);
-
                         sessionStorage.setItem(
                           "currentAccount",
                           JSON.stringify(

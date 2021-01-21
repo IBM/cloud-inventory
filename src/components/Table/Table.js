@@ -17,13 +17,7 @@ import {
 } from "carbon-components-react";
 const { ipcRenderer } = window.require("electron");
 
-const MyTable = ({
-  title,
-  rowData,
-  headerData,
-  eventNameRequest,
-  eventNameLoading,
-}) => {
+const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
   return (
     <DataTable rows={rowData} headers={headerData}>
       {/* isSortable */}
@@ -59,10 +53,10 @@ const MyTable = ({
               <Button
                 tabIndex={getBatchActionProps().shouldShowBatchActions ? -1 : 0}
                 onClick={() => {
-                  ipcRenderer.send(
-                    eventNameRequest,
-                    `Requesting Classic Virtual Server data from API$${eventNameLoading}`
+                  eventArgs.credentials = JSON.parse(
+                    sessionStorage.getItem("currentAccount")
                   );
+                  ipcRenderer.send(eventName, eventArgs);
                 }}
                 size="small"
                 kind="primary"

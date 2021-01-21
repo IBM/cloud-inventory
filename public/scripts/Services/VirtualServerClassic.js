@@ -2,11 +2,10 @@ const { ipcMain } = require("electron");
 const { api } = require("../Helpers/Api");
 
 ipcMain.on("virtual-server-classic:requestApi", async (event, arg) => {
-  const [log, loadingEvent] = arg.split("$");
-  console.log(log);
+  console.log(arg.log);
 
-  if (loadingEvent) {
-    event.reply(loadingEvent, "Loading Table");
+  if (arg.eventLoading) {
+    event.reply(arg.eventLoading);
   }
 
   await api
@@ -14,9 +13,8 @@ ipcMain.on("virtual-server-classic:requestApi", async (event, arg) => {
       "/SoftLayer_Account/getVirtualGuests.json?objectMask=mask[datacenter,operatingSystem,hourlyBillingFlag,powerState,type,networkVlans]",
       {
         auth: {
-          username: "1713407_vinicius.sebadelhe@ibm.com",
-          password:
-            "a026dbd22b12483bde237256aba93926d4830bfc2a1db0ff616b0967b17b22f6",
+          username: arg.credentials.userNameApi,
+          password: arg.credentials.classicApiKey,
         },
       }
     )

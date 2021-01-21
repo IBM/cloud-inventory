@@ -10,14 +10,13 @@ const VirtualServerClassic = () => {
   const [loadingTable, setLoadingTable] = useState(true);
 
   useEffect(() => {
-    ipcRenderer.send(
-      "virtual-server-classic:requestApi",
-      "Requesting Classic Virtual Server data from API"
-    );
+    ipcRenderer.send("virtual-server-classic:requestApi", {
+      log: "Requesting Classic Virtual Server data from API",
+      credentials: JSON.parse(sessionStorage.getItem("currentAccount")),
+    });
   }, []);
 
   ipcRenderer.on("virtual-server-classic:loading-table", (event, arg) => {
-    console.log(arg);
     setLoadingTable(true);
   });
 
@@ -33,8 +32,11 @@ const VirtualServerClassic = () => {
           title="Virtual Server for Classic"
           headerData={Headers}
           rowData={rows}
-          eventNameRequest="virtual-server-classic:requestApi"
-          eventNameLoading="virtual-server-classic:loading-table"
+          eventName="virtual-server-classic:requestApi"
+          eventArgs={{
+            log: "Requesting Classic Virtual Server data from API",
+            eventLoading: "virtual-server-classic:loading-table",
+          }}
         />
       )}
       {loadingTable && <DataTableSkeleton headers={Headers} rowCount={11} />}

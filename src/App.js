@@ -1,6 +1,6 @@
 //Import Geral
 import React, { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Content } from "carbon-components-react/lib/components/UIShell";
 
 //Import dos componentes
@@ -16,6 +16,21 @@ import "./App.scss";
 
 const { ipcRenderer } = window.require("electron");
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      sessionStorage.getItem("currentAccount") ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{ pathname: "/accounts", state: { from: props.location } }}
+        />
+      )
+    }
+  />
+);
+
 const App = () => {
   const [accounts, setAccounts] = useState([]);
   useEffect(() => {
@@ -23,8 +38,10 @@ const App = () => {
       const accounts = await ipcRenderer.invoke("account:get", {
         log: "Getting accounts",
       });
-      //sessionStorage.setItem("accounts", JSON.stringify(accounts));
       setAccounts(accounts);
+      if (accounts.length !== 0) {
+        sessionStorage.setItem("currentAccount", JSON.stringify(accounts[0]));
+      }
     };
     fetchAccounts();
   }, []);
@@ -34,8 +51,8 @@ const App = () => {
       <Content>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/classic/vsi" component={VirtualServerClassic} />
           <Route path="/accounts" component={Accounts} />
+          <PrivateRoute path="/classic/vsi" component={VirtualServerClassic} />
         </Switch>
       </Content>
     </div>

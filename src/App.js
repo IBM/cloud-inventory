@@ -8,8 +8,9 @@ import Header from "./components/Header";
 
 //Import das paginas
 import Home from "./pages/Home";
-import VirtualServerClassic from "./pages/VirtualServerClassic";
+import VirtualServerClassic from "./pages/classic/VirtualServerClassic";
 import Accounts from "./pages/Accounts";
+import VPC from "./pages/vpc/overview";
 
 //Import do CSS
 import "./App.scss";
@@ -53,6 +54,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/accounts" component={Accounts} />
           <PrivateRoute path="/classic/vsi" component={VirtualServerClassic} />
+          <PrivateRoute path="/vpc/overview" component={VPC} />
         </Switch>
       </Content>
     </div>

@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import Table from "../../components/Table";
+import Table from "../../../components/Table";
 import { DataTableSkeleton } from "carbon-components-react";
 import Headers from "./tableHeader";
 
 const { ipcRenderer } = window.require("electron");
 
-const VirtualServerClassic = () => {
+const VPCoverview = () => {
   const [rows, setRows] = useState([]);
   const [loadingTable, setLoadingTable] = useState(true);
 
   useEffect(() => {
-    ipcRenderer.send("virtual-server-classic:requestApi", {
-      log: "Requesting Classic Virtual Server data from API",
+    ipcRenderer.send("vpc:requestApi", {
+      log: "Requesting VPCs data from API",
       credentials: JSON.parse(sessionStorage.getItem("currentAccount")),
     });
   }, []);
 
-  ipcRenderer.on("virtual-server-classic:loading-table", (event, arg) => {
+  ipcRenderer.on("vpc:loading-table", (event, arg) => {
     setLoadingTable(true);
   });
 
-  ipcRenderer.on("virtual-server-classic:receiving-data", (event, arg) => {
+  ipcRenderer.on("vpc:receiving-data", (event, arg) => {
     setRows(arg);
     setLoadingTable(false);
   });
@@ -29,13 +29,13 @@ const VirtualServerClassic = () => {
     <>
       {!loadingTable && (
         <Table
-          title="Virtual Server for Classic"
+          title="VPCs"
           headerData={Headers}
           rowData={rows}
-          eventName="virtual-server-classic:requestApi"
+          eventName="vpc:requestApi"
           eventArgs={{
-            log: "Requesting Classic Virtual Server data from API",
-            eventLoading: "virtual-server-classic:loading-table",
+            log: "Requesting VPC data from API",
+            eventLoading: "vpc:loading-table",
           }}
         />
       )}
@@ -44,4 +44,4 @@ const VirtualServerClassic = () => {
   );
 };
 
-export default VirtualServerClassic;
+export default VPCoverview;

@@ -39,6 +39,7 @@ const MyTable = ({
           <TableToolbar>
             <TableToolbarContent>
               <TableToolbarSearch
+                expanded
                 tabIndex={getBatchActionProps().shouldShowBatchActions ? -1 : 0}
                 onChange={onInputChange}
               />

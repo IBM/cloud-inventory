@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Accounts from "./pages/Accounts";
 import VirtualServerClassic from "./pages/Classic/VirtualServerClassic";
+import BareMetal from "./pages/Classic/BareMetal";
 import VPC from "./pages/VPC/Overview";
 
 //Import do CSS
@@ -17,6 +18,9 @@ import "./App.scss";
 
 const { ipcRenderer } = window.require("electron");
 
+// Controle para as rotas
+// Se o usuario nao tiver nenhuma conta cadastrada no app
+// ele é redirecionado para a pagina /accounts
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -34,6 +38,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 const App = () => {
   const [accounts, setAccounts] = useState([]);
+
+  //Busca os dados das contas
   useEffect(() => {
     const fetchAccounts = async () => {
       const accounts = await ipcRenderer.invoke("account:get", {
@@ -46,6 +52,8 @@ const App = () => {
     };
     fetchAccounts();
   }, []);
+
+  //
   return (
     <div className="app">
       <Header accounts={accounts} />
@@ -54,6 +62,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/accounts" component={Accounts} />
           <PrivateRoute path="/classic/vsi" component={VirtualServerClassic} />
+          <PrivateRoute path="/classic/bm" component={BareMetal} />
           <PrivateRoute path="/vpc/overview" component={VPC} />
         </Switch>
       </Content>

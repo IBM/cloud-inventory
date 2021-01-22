@@ -1,2 +1,2 @@
-import vpcoverview from "./vpcoverview";
-export default vpcoverview;
+import Overview from "./Overview";
+export default Overview;

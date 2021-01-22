@@ -40,6 +40,9 @@ const SideBar = () => {
               Virtual Server Instances
             </SideNavLink>
           </Link>
+          <Link to="/vpc/subnet">
+            <SideNavLink renderIcon={VirtualMachine32}>Subnet</SideNavLink>
+          </Link>
         </SideNavMenu>
       </SideNavItems>
     </SideNav>

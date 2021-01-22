@@ -12,6 +12,7 @@ import Accounts from "./pages/Accounts";
 import VirtualServerClassic from "./pages/Classic/VirtualServerClassic";
 import BareMetal from "./pages/Classic/BareMetal";
 import VPC from "./pages/VPC/Overview";
+import VirtualServerVPC from "./pages/VPC/VirtualServer";
 
 //Import do CSS
 import "./App.scss";
@@ -64,6 +65,7 @@ const App = () => {
           <PrivateRoute path="/classic/vsi" component={VirtualServerClassic} />
           <PrivateRoute path="/classic/bm" component={BareMetal} />
           <PrivateRoute path="/vpc/overview" component={VPC} />
+          <PrivateRoute path="/vpc/vsi" component={VirtualServerVPC} />
         </Switch>
       </Content>
     </div>

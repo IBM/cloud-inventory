@@ -1,5 +1,5 @@
 const { ipcMain } = require("electron");
-const { api } = require("../Helpers/Api");
+const { classicApi } = require("../Helpers/Api");
 
 ipcMain.on("virtual-server-classic:requestApi", async (event, arg) => {
   console.log(arg.log);
@@ -8,7 +8,7 @@ ipcMain.on("virtual-server-classic:requestApi", async (event, arg) => {
     event.reply(arg.eventLoading);
   }
 
-  await api
+  await classicApi
     .get(
       "/SoftLayer_Account/getVirtualGuests.json?objectMask=mask[datacenter,operatingSystem,hourlyBillingFlag,powerState,type,networkVlans]",
       {

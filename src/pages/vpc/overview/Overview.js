@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Table from "../../../components/Table";
 import { DataTableSkeleton } from "carbon-components-react";
-import Headers from "./tableHeader";
+import Headers from "./TableHeader";
 
 const { ipcRenderer } = window.require("electron");
 
-const VPCoverview = () => {
+const Overview = () => {
   const [rows, setRows] = useState([]);
   const [loadingTable, setLoadingTable] = useState(true);
 
@@ -44,4 +44,4 @@ const VPCoverview = () => {
   );
 };
 
-export default VPCoverview;
+export default Overview;

@@ -8,9 +8,9 @@ import Header from "./components/Header";
 
 //Import das paginas
 import Home from "./pages/Home";
-import VirtualServerClassic from "./pages/classic/VirtualServerClassic";
 import Accounts from "./pages/Accounts";
-import VPC from "./pages/vpc/overview";
+import VirtualServerClassic from "./pages/Classic/VirtualServerClassic";
+import VPC from "./pages/VPC/Overview";
 
 //Import do CSS
 import "./App.scss";

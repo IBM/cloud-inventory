@@ -1,5 +1,16 @@
 const axios = require("axios");
 
+const iamApi = axios.default.create({
+  baseURL: "https://iam.cloud.ibm.com/identity/token",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+    Accept: "application/json",
+  },
+  params: {
+    grant_type: "urn:ibm:params:oauth:grant-type:apikey",
+  },
+});
+
 const classicApi = axios.default.create({
   baseURL: "https://api.softlayer.com/rest/v3.1/",
   headers: {
@@ -52,4 +63,4 @@ const vpcApi = [
   }),
 ];
 
-module.exports = { classicApi, vpcApi };
+module.exports = { iamApi, classicApi, vpcApi };

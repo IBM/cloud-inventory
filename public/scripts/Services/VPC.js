@@ -8,6 +8,7 @@ ipcMain.on("vpc:requestApi", async (event, arg) => {
     event.reply(arg.eventLoading);
   }
 
+  /*
 const service = {
 	authenticator: = new IamAuthenticator({
 		apikey: arg.credentials.cloudApiKey,
@@ -21,7 +22,7 @@ const res = await vpcService.listVpcs();
         data[index].id = id;
         data[index].name = name;
         data[index].classic = e.classic_access;
-        /* data[index].deviceType = e.type.name;
+         data[index].deviceType = e.type.name;
         data[index].os = `${
           osName === "Microsoft" ? "Windows" : osName
         } ${version.replace("-64", "")}`;
@@ -35,8 +36,8 @@ const res = await vpcService.listVpcs();
             : `Private: ${e.networkVlans[0].vlanNumber}`;
         data[index].created = `${month}/${day}/${year}`;
         data[index].billing = e.hourlyBillingFlag ? "Hourly" : "Monthly";
-        data[index].status = e.powerState.name; */
+        data[index].status = e.powerState.name;
       });
 
-      event.reply("vpc:receiving-data", data);
+      event.reply("vpc:receiving-data", data);*/
 });

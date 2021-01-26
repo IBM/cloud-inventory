@@ -21,6 +21,7 @@ const Subnet = () => {
   });
 
   ipcRenderer.on("subnet-vpc:receiving-data", (event, arg) => {
+    console.log(arg);
     setRows(arg);
     setLoadingTable(false);
   });

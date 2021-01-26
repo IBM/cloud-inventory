@@ -4,7 +4,7 @@ const headers = [
     header: "Subnet Name",
   },
   {
-    key: "name",
+    key: "vpcName",
     header: "VPC name",
   },
   {
@@ -13,7 +13,7 @@ const headers = [
   },
 
   {
-    key: "ip",
+    key: "ipv4_cidr_block",
     header: "IP range",
   },
   {
@@ -21,16 +21,16 @@ const headers = [
     header: "Plublic Gateway",
   },
   {
-    key: "ip",
+    key: "total_ipv4_address_count",
     header: "Available IP",
-  },
-  {
-    key: "created",
-    header: "Created",
   },
   {
     key: "status",
     header: "Status",
+  },
+  {
+    key: "created",
+    header: "Created",
   },
 ];
 

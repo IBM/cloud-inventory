@@ -17,47 +17,65 @@ const classicApi = axios.default.create({
 
 const vpcApi = [
   //US South (Dallas)
-  axios.default.create({
-    baseURL: "https://us-south.iaas.cloud.ibm.com/",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }),
+  {
+    api: axios.default.create({
+      baseURL: "https://us-south.iaas.cloud.ibm.com/",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }),
+    location: "US South (Dallas)",
+  },
   //US East (Washington DC)
-  axios.default.create({
-    baseURL: "https://us-east.iaas.cloud.ibm.com",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }),
+  {
+    api: axios.default.create({
+      baseURL: "https://us-east.iaas.cloud.ibm.com",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }),
+    location: "US East (Washington DC)",
+  },
   //United Kingdom (London)
-  axios.default.create({
-    baseURL: "https://eu-gb.iaas.cloud.ibm.com",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }),
+  {
+    api: axios.default.create({
+      baseURL: "https://eu-gb.iaas.cloud.ibm.com",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }),
+    location: "United Kingdom (London)",
+  },
   //EU Germany (Frankfurt)
-  axios.default.create({
-    baseURL: "https://eu-de.iaas.cloud.ibm.com",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }),
+  {
+    api: axios.default.create({
+      baseURL: "https://eu-de.iaas.cloud.ibm.com",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }),
+    location: "EU Germany (Frankfurt)",
+  },
   //Japan (Tokyo)
-  axios.default.create({
-    baseURL: "https://jp-tok.iaas.cloud.ibm.com",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }),
+  {
+    api: axios.default.create({
+      baseURL: "https://jp-tok.iaas.cloud.ibm.com",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }),
+    location: "Japan (Tokyo)",
+  },
   //Australia (Sydney)
-  axios.default.create({
-    baseURL: "https://au-syd.iaas.cloud.ibm.com",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }),
+  {
+    api: axios.default.create({
+      baseURL: "https://au-syd.iaas.cloud.ibm.com",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }),
+    location: "Australia (Sydney)",
+  },
 ];
 
 module.exports = { iamApi, classicApi, vpcApi };

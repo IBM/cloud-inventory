@@ -79,7 +79,14 @@ const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
               {rows.map((row) => (
                 <TableRow {...getRowProps({ row })}>
                   {row.cells.map((cell) => (
-                    <TableCell key={cell.id}>{cell.value}</TableCell>
+                    <TableCell key={cell.id}>
+                      {typeof cell.value === "string" &&
+                      cell.value.includes("<br>")
+                        ? cell.value.split("<br>").map((value) => {
+                            return <p>{value}</p>;
+                          })
+                        : cell.value}
+                    </TableCell>
                   ))}
                 </TableRow>
               ))}

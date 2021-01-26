@@ -32,7 +32,7 @@ ipcMain.on("virtual-server-classic:requestApi", async (event, arg) => {
         const osName =
           e.operatingSystem.softwareLicense.softwareDescription.manufacturer;
         const publicIp = e.primaryIpAddress;
-        data[index].id = index;
+        data[index].id = `${index}`;
         data[index].name = e.fullyQualifiedDomainName;
         data[index].location = e.datacenter.name;
         data[index].deviceType = e.type.name;
@@ -40,13 +40,13 @@ ipcMain.on("virtual-server-classic:requestApi", async (event, arg) => {
           osName === "Microsoft" ? "Windows" : osName
         } ${version.replace("-64", "")}`;
 
-        data[index].vcpu = e.maxCpu;
+        data[index].vcpu = `${e.maxCpu}`;
         data[index].ram = `${Math.floor(e.maxMemory / 1000)}GB`;
         data[index].privateIp = e.primaryBackendIpAddress;
         data[index].publicIp = publicIp ? publicIp : "-";
         data[index].vlans =
           e.networkVlans.length === 2
-            ? `Public: ${e.networkVlans[1].vlanNumber}\nPrivate: ${e.networkVlans[0].vlanNumber}`
+            ? `Public: ${e.networkVlans[1].vlanNumber}<br>Private: ${e.networkVlans[0].vlanNumber}`
             : `Private: ${e.networkVlans[0].vlanNumber}`;
         data[index].created = `${month}/${day}/${year}`;
         data[index].billing = e.hourlyBillingFlag ? "Hourly" : "Monthly";

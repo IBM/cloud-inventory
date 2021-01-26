@@ -10,17 +10,17 @@ const Overview = () => {
   const [loadingTable, setLoadingTable] = useState(true);
 
   useEffect(() => {
-    ipcRenderer.send("vpc:requestApi", {
+    ipcRenderer.send("vpc-overview:requestApi", {
       log: "Requesting VPCs data from API",
       credentials: JSON.parse(sessionStorage.getItem("currentAccount")),
     });
   }, []);
 
-  ipcRenderer.on("vpc:loading-table", (event, arg) => {
+  ipcRenderer.on("vpc-overview:loading-table", (event, arg) => {
     setLoadingTable(true);
   });
 
-  ipcRenderer.on("vpc:receiving-data", (event, arg) => {
+  ipcRenderer.on("vpc-overview:receiving-data", (event, arg) => {
     setRows(arg);
     setLoadingTable(false);
   });
@@ -32,10 +32,10 @@ const Overview = () => {
           title="VPCs"
           headerData={Headers}
           rowData={rows}
-          eventName="vpc:requestApi"
+          eventName="vpc-overview:requestApi"
           eventArgs={{
             log: "Requesting VPC data from API",
-            eventLoading: "vpc:loading-table",
+            eventLoading: "vpc-overview:loading-table",
           }}
         />
       )}

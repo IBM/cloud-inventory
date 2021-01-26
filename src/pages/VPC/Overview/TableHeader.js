@@ -1,15 +1,31 @@
 const headers = [
   {
-    key: "id",
-    header: "VPC ID",
-  },
-  {
     key: "name",
-    header: "VPC",
+    header: "VPC Name",
   },
   {
-    key: "classic",
-    header: "Classic",
+    key: "classic_access",
+    header: "Classic Access",
+  },
+  {
+    key: "resourceGroup",
+    header: "Resource Group",
+  },
+  {
+    key: "location",
+    header: "Location",
+  },
+  {
+    key: "address_prefixes",
+    header: "Address Prefixes",
+  },
+  {
+    key: "status",
+    header: "Status",
+  },
+  {
+    key: "created",
+    header: "Created",
   },
 ];
 

@@ -1,43 +1,78 @@
 const { ipcMain } = require("electron");
-const { api } = require("../Helpers/Api");
+const { iamApi, vpcApi } = require("../Helpers/Api");
 
-ipcMain.on("vpc:requestApi", async (event, arg) => {
+ipcMain.on("vpc-overview:requestApi", async (event, arg) => {
   console.log(arg.log);
 
   if (arg.eventLoading) {
     event.reply(arg.eventLoading);
   }
 
-  /*
-const service = {
-	authenticator: = new IamAuthenticator({
-		apikey: arg.credentials.cloudApiKey,
-	}),
-};
+  // Gera o Bearer Token
+  const token = await iamApi
+    .post(
+      `/token?grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey=${arg.credentials.cloudApiKey}`
+    )
+    .then((res) => {
+      return res.data.access_token;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-const vpcService = new VpcV1(service);
-const res = await vpcService.listVpcs();
+  let data = [];
+  // A API de VPC é dividida em um endpoint por regiao(dal, wds, lon...)
+  // criamos um loop para realizar a requisição de cada uma delas
+  vpcApi.forEach((region) => {
+    // Esta requisição retonar uma promise
+    const res = region.api
+      .get("/v1/vpcs?version=2021-01-19&generation=2", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        const tempData = res.data.vpcs;
+        tempData.forEach((e, index) => {
+          const [date, hour] = e.created_at.split("T");
+          const [year, day, month] = date.split("-");
+          tempData[index].classic_access = e.classic_access ? "Yes" : "No";
+          tempData[index].resourceGroup = e.resource_group.name;
+          tempData[index].created = `${month}/${day}/${year}`;
+          tempData[index].location = region.location;
+          tempData[index].status =
+            e.status.charAt(0).toUpperCase() + e.status.slice(1);
+          tempData[index].address_prefixes = "";
+          e.cse_source_ips.forEach((sourceIp) => {
+            tempData[index].address_prefixes += `${sourceIp.ip.address}<br>`;
+          });
+        });
 
-      res.vpcs.forEach((e, index) => {
-        data[index].id = id;
-        data[index].name = name;
-        data[index].classic = e.classic_access;
-         data[index].deviceType = e.type.name;
-        data[index].os = `${
-          osName === "Microsoft" ? "Windows" : osName
-        } ${version.replace("-64", "")}`;
-        data[index].vcpu = e.maxCpu;
-        data[index].ram = `${Math.floor(e.maxMemory / 1000)}GB`;
-        data[index].privateIp = e.primaryBackendIpAddress;
-        data[index].publicIp = publicIp ? publicIp : "-";
-        data[index].vlans =
-          e.networkVlans.length === 2
-            ? `Public: ${e.networkVlans[1].vlanNumber}\nPrivate: ${e.networkVlans[0].vlanNumber}`
-            : `Private: ${e.networkVlans[0].vlanNumber}`;
-        data[index].created = `${month}/${day}/${year}`;
-        data[index].billing = e.hourlyBillingFlag ? "Hourly" : "Monthly";
-        data[index].status = e.powerState.name;
+        return tempData;
+      })
+      .catch((err) => {
+        console.log(err);
       });
 
-      event.reply("vpc:receiving-data", data);*/
+    // O retorno de cada uma das APIs é contactenado no array inicial
+    data = data.concat(res);
+  });
+
+  // As promises retornam arrays de objetos, esta funciton
+  // converte todos os arrays em um array unico com todos os dados
+  function* flatten(arr) {
+    for (const el of arr) {
+      if (Array.isArray(el)) {
+        yield* flatten(el);
+      } else {
+        yield el;
+      }
+    }
+  }
+
+  // Esperamos todas as promises serem resolvidas e juntamos o resultado
+  // de todas elas em um unico array de objs
+  data = await Promise.all(data).then((array) => [...flatten(array)]);
+
+  event.reply("vpc-overview:receiving-data", data);
 });

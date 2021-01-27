@@ -12,8 +12,12 @@ import {
   Table32,
   VirtualPrivateCloudAlt32,
   VirtualPrivateCloud32,
+  Network_232,
 } from "@carbon/icons-react";
-import {faNetworkWired} from '@fortawesome/free-solid-svg-icons'
+/*import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Use of FontAwesome Icons
+import {
+  faNetworkWired,
+} from "@fortawesome/free-solid-svg-icons";*/
 
 const SideBar = () => {
   return (
@@ -26,7 +30,9 @@ const SideBar = () => {
             </SideNavLink>
           </Link>
           <Link to="/classic/bm">
-            <SideNavLink renderIcon={Table32}>Bare Metal</SideNavLink>
+            <SideNavLink renderIcon={Table32}>
+              Bare Metal
+            </SideNavLink>
           </Link>
         </SideNavMenu>
         <SideNavMenu
@@ -34,7 +40,9 @@ const SideBar = () => {
           title="Virtual Private Cloud"
         >
           <Link to="/vpc/overview">
-            <SideNavLink renderIcon={VirtualPrivateCloud32}>VPCs</SideNavLink>
+            <SideNavLink renderIcon={VirtualPrivateCloud32}>
+              VPCs
+            </SideNavLink>
           </Link>
           <Link to="/vpc/vsi">
             <SideNavLink renderIcon={VirtualMachine32}>
@@ -42,7 +50,9 @@ const SideBar = () => {
             </SideNavLink>
           </Link>
           <Link to="/vpc/subnet">
-            <SideNavLink renderIcon={faNetworkWired}>Subnet</SideNavLink>
+            <SideNavLink renderIcon={Network_232}> 
+              {/*<FontAwesomeIcon icon={faNetworkWired} />*/} Subnet
+            </SideNavLink>
           </Link>
         </SideNavMenu>
       </SideNavItems>

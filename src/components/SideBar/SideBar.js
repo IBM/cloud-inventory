@@ -13,6 +13,7 @@ import {
   VirtualPrivateCloudAlt32,
   VirtualPrivateCloud32,
 } from "@carbon/icons-react";
+import {faNetworkWired} from '@fortawesome/free-solid-svg-icons'
 
 const SideBar = () => {
   return (
@@ -41,7 +42,7 @@ const SideBar = () => {
             </SideNavLink>
           </Link>
           <Link to="/vpc/subnet">
-            <SideNavLink renderIcon={VirtualMachine32}>Subnet</SideNavLink>
+            <SideNavLink renderIcon={faNetworkWired}>Subnet</SideNavLink>
           </Link>
         </SideNavMenu>
       </SideNavItems>

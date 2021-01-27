@@ -21,6 +21,7 @@ const VirtualServer = () => {
   });
 
   ipcRenderer.on("virtual-server-vpc:receiving-data", (event, arg) => {
+    console.log(arg);
     setRows(arg);
     setLoadingTable(false);
   });

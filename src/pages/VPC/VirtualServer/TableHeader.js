@@ -12,35 +12,35 @@ const headers = [
     header: "Location",
   },
   {
-    key: "deviceType",
+    key: "flavor",
     header: "Flavor",
   },
   {
-    key: "vcpu",
+    key: "cpu",
     header: "vCPU",
   },
   {
-    key: "ram",
+    key: "memory",
     header: "RAM",
   },
   {
-    key: "bandwidtth",
+    key: "bandwidth",
     header: "Bandwidth",
   },
   {
-    key: "os",
+    key: "so",
     header: "Operating System",
   },
   {
-    key: "vpcname",
+    key: "namevpc",
     header: "VPC Name",
   },
   {
-    key: "privateIp",
+    key: "privateip",
     header: "Private IP",
   },
   {
-    key: "floatIp",
+    key: "",
     header: "Float IP",
   },
   {

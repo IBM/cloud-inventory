@@ -10,8 +10,8 @@ import {
   HeaderMenuItem,
 } from "carbon-components-react/lib/components/UIShell";
 import { Link } from "react-router-dom";
-import SideBar from "../SideBar";
 import { IbmCloud32 } from "@carbon/icons-react";
+import SideBar from "../SideBar";
 
 const MyHeader = ({ accounts }) => {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -32,7 +32,9 @@ const MyHeader = ({ accounts }) => {
     <div className="container">
       <Header aria-label="IBM Platform Name">
         <HeaderName href="#" prefix="">
-          <IbmCloud32 className="iconcolor" /> <p className="texto">Cloud Inventory</p>
+          <IbmCloud32 className="bx--header__name--icon" />
+          <span className="bx--header__name--prefix">Cloud</span>
+          &nbsp; Inventory
         </HeaderName>
 
         <HeaderGlobalBar>

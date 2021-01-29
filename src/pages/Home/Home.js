@@ -1,6 +1,6 @@
 import React from "react";
 
-import Imagem from "../../images/image.jpg";
+import Imagem from "../../images/cloudinvent.png";
 
 const Home = () => {
   return (

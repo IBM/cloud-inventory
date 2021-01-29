@@ -1,0 +1,35 @@
+.bx--home__img {
+  width: 100%;
+  height: 80vh;
+  margin-bottom: 0px;
+}
+
+.bx--home__container--text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -10px;
+}
+
+.bx--home__text {
+  display: flex;
+  justify-content: center;
+  width: 100vh;
+  height: 50vh;
+  padding: 5vh;
+  background-color: black;
+  color: white;
+}
+
+.bx--home__title {
+  font-weight: bold;
+  font-size: 2.6vw;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.bx--home__description {
+  font-weight: lighter;
+  font-size: 2vw;
+  line-height: 1.4;
+  letter-spacing: 0;
+}

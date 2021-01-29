@@ -12,7 +12,6 @@ const Home = () => {
       />
       <div className="bx--home__container--text">
         <div className="bx--home__text bx--home__title">
-          What is <br />
           Cloud Inventory?
         </div>
         <div className="bx--home__text bx--home__description">

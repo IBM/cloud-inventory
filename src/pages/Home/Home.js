@@ -16,10 +16,10 @@ const Home = () => {
           Cloud Inventory?
         </div>
         <div className="bx--home__text bx--home__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing it, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-          ea commodo consequat.
+          Cloud Inventory provides visibility into your IBM Cloud computing environment.
+          You can use Cloud Inventory to collect metadata from you instances and use this
+          to query the data and quickly determine which instances are running, what OS and etc.
+          You can also configure and view inventory data from multiple IBM Cloud Regions and accounts.
         </div>
       </div>
     </div>

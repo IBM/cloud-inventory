@@ -13,12 +13,17 @@ import {
   VirtualPrivateCloudAlt32,
   VirtualPrivateCloud32,
   Network_232,
+  Home32,
 } from "@carbon/icons-react";
 
 const SideBar = () => {
   return (
     <SideNav aria-label="Side navigation" isRail>
       <SideNavItems>
+        <Link to="/">
+          <SideNavLink renderIcon={Home32}>Home</SideNavLink>
+        </Link>
+        <hr />
         <SideNavMenu renderIcon={DataBase32} title="Classic Infrastructure">
           <Link to="/classic/vsi">
             <SideNavLink renderIcon={VirtualMachine32}>

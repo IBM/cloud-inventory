@@ -19,8 +19,7 @@ const { ipcRenderer } = window.require("electron");
 
 const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
   return (
-    <DataTable rows={rowData} headers={headerData}>
-      {/* isSortable */}
+    <DataTable rows={rowData} headers={headerData} isSortable>
       {({
         rows,
         headers,

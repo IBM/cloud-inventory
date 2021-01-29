@@ -12,7 +12,7 @@ const Home = () => {
       />
       <div className="bx--home__container--text">
         <div className="bx--home__text bx--home__title">
-          Cloud Inventory?
+          Cloud Inventory
         </div>
         <div className="bx--home__text bx--home__description">
           Cloud Inventory provides visibility into your IBM Cloud computing environment.

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   SideNav,
   SideNavMenu,
@@ -17,37 +17,72 @@ import {
 } from "@carbon/icons-react";
 
 const SideBar = () => {
+  const location = useLocation().pathname;
+  const defaultExpanded = location === "/" ? true : false;
   return (
-    <SideNav aria-label="Side navigation" isRail>
+    <SideNav aria-label="Side navigation" isRail expanded={defaultExpanded}>
       <SideNavItems>
         <Link to="/">
-          <SideNavLink renderIcon={Home32}>Home</SideNavLink>
+          <SideNavLink
+            renderIcon={Home32}
+            aria-current={location === "/" ? "page" : ""}
+          >
+            Home
+          </SideNavLink>
         </Link>
         <hr />
-        <SideNavMenu renderIcon={DataBase32} title="Classic Infrastructure">
+        <SideNavMenu
+          title="Classic Infrastructure"
+          renderIcon={DataBase32}
+          defaultExpanded={defaultExpanded}
+          isActive={location.includes("/classic/") ? true : false}
+        >
           <Link to="/classic/vsi">
-            <SideNavLink renderIcon={VirtualMachine32}>
+            <SideNavLink
+              renderIcon={VirtualMachine32}
+              aria-current={location.includes("/classic/vsi") ? "page" : ""}
+            >
               Virtual Server
             </SideNavLink>
           </Link>
           <Link to="/classic/bm">
-            <SideNavLink renderIcon={Table32}>Bare Metal</SideNavLink>
+            <SideNavLink
+              renderIcon={Table32}
+              aria-current={location.includes("/classic/bm") ? "page" : ""}
+            >
+              Bare Metal
+            </SideNavLink>
           </Link>
         </SideNavMenu>
         <SideNavMenu
-          renderIcon={VirtualPrivateCloudAlt32}
           title="Virtual Private Cloud"
+          renderIcon={VirtualPrivateCloudAlt32}
+          defaultExpanded={defaultExpanded}
+          isActive={location.includes("/vpc/") ? true : false}
         >
           <Link to="/vpc/overview">
-            <SideNavLink renderIcon={VirtualPrivateCloud32}>VPCs</SideNavLink>
+            <SideNavLink
+              renderIcon={VirtualPrivateCloud32}
+              aria-current={location.includes("/vpc/overview") ? "page" : ""}
+            >
+              VPCs
+            </SideNavLink>
           </Link>
           <Link to="/vpc/vsi">
-            <SideNavLink renderIcon={VirtualMachine32}>
+            <SideNavLink
+              renderIcon={VirtualMachine32}
+              aria-current={location.includes("/vpc/vsi") ? "page" : ""}
+            >
               Virtual Server Instances
             </SideNavLink>
           </Link>
           <Link to="/vpc/subnet">
-            <SideNavLink renderIcon={Network_232}>Subnet</SideNavLink>
+            <SideNavLink
+              renderIcon={Network_232}
+              aria-current={location.includes("/vpc/subnet") ? "page" : ""}
+            >
+              Subnet
+            </SideNavLink>
           </Link>
         </SideNavMenu>
       </SideNavItems>

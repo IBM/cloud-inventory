@@ -1,13 +1,16 @@
 const { ipcMain } = require("electron");
 const { decrypt } = require("../Helpers/Crypto");
-const os = require('os');  // Allocating os module
+const { accountPath } = require("../Helpers/Archive");
 const fs = require("fs");
 
 ipcMain.handle("account:get", async (event, arg) => {
   console.log(arg.log);
-  const file = `${os.homedir()}/.cloud-inventory/accounts.json`;
-  try {
-    let accounts = JSON.parse(fs.readFileSync(file, "utf8"));
+  const filePath = `${accountPath}/accounts.json`;
+
+  if (!fs.existsSync(filePath)) {
+    return [];
+  } else {
+    let accounts = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
     accounts.forEach((account, index) => {
       accounts[index] = JSON.parse(decrypt(account));
@@ -15,7 +18,5 @@ ipcMain.handle("account:get", async (event, arg) => {
     });
 
     return accounts;
-  } catch {
-    return [];
   }
 });

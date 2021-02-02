@@ -1,6 +1,7 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
+require("./scripts/index");
 
 let mainWindow;
 
@@ -48,4 +49,4 @@ app.on("activate", () => {
   }
 });
 
-require("./scripts/index");
+ipcMain.emit("archive:verify");

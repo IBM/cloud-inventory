@@ -11,6 +11,7 @@ function createWindow() {
     minWidth: 1024,
     minHeight: 768,
     title: "Cloud Inventory",
+    icon: __dirname + "/favicon.icns",
     autoHideMenuBar: isDev ? false : true,
     webPreferences: {
       nodeIntegration: true,

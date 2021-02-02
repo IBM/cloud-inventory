@@ -78,7 +78,11 @@
     "productName": "Cloud Inventory",
     "copyright": "Copyright© 2021. IBM Cloud.",
     "mac": {
+      "icon": "./public/favicon.icns",
       "category": "public.app-category.utilities"
+    },
+    "win": {
+      "icon": "./public/favicon.icns"
     },
     "files": [
       "build/**/*",

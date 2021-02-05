@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   DataTable,
   TableContainer,
@@ -14,12 +14,42 @@ import {
   TableToolbarMenu,
   TableToolbarAction,
   Button,
+  Checkbox,
 } from "carbon-components-react";
+import { Renew32, Export20, Restart32, Restart20 } from "@carbon/icons-react";
 const { ipcRenderer } = window.require("electron");
 
 const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
+  const [tableHader, setTableHeader] = useState(headerData);
+  const [defaultHeader] = useState(headerData);
+
+  // Define se o checkbox vem checked por padrao
+  const handleDefaultChecked = (header) => {
+    return tableHader.find((e) => e.key === header.key) ? true : false;
+  };
+
+  // Adiciona ou remove um dos header da tabela
+  const handleChangeHeader = (event, header, index) => {
+    if (event.target.checked) {
+      // Adiciona um header da tabela caso o checkbox nao esteja check
+      const tempHeader = [...tableHader];
+      tempHeader.splice(index, 0, header);
+      setTableHeader(tempHeader);
+    } else {
+      // Remove um header da tabela caso o checkbox nao esteja check
+      setTableHeader(
+        tableHader.filter((element) => element.key !== header.key)
+      );
+    }
+  };
+
+  // Reseta os campos do header
+  const handleResetDefault = () => {
+    setTableHeader(defaultHeader);
+  };
+
   return (
-    <DataTable rows={rowData} headers={headerData} isSortable>
+    <DataTable rows={rowData} headers={tableHader} isSortable>
       {({
         rows,
         headers,
@@ -37,19 +67,8 @@ const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
                 onChange={onInputChange}
               />
               <TableToolbarMenu
-                tabIndex={getBatchActionProps().shouldShowBatchActions ? -1 : 0}
-              >
-                <TableToolbarAction
-                  primaryFocus
-                  onClick={() => alert("Alert 1")}
-                >
-                  export to PDF
-                </TableToolbarAction>
-                <TableToolbarAction onClick={() => alert("Alert 2")}>
-                  export to Excel
-                </TableToolbarAction>
-              </TableToolbarMenu>
-              <Button
+                renderIcon={Renew32}
+                title="Refresh"
                 tabIndex={getBatchActionProps().shouldShowBatchActions ? -1 : 0}
                 onClick={() => {
                   eventArgs.credentials = JSON.parse(
@@ -57,10 +76,37 @@ const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
                   );
                   ipcRenderer.send(eventName, eventArgs);
                 }}
+              />
+
+              <TableToolbarMenu
+                tabIndex={getBatchActionProps().shouldShowBatchActions ? -1 : 0}
+              >
+                <li className="bx--table-settings__title">Edit columns</li>
+                {defaultHeader.map((header, index) => (
+                  <li className="bx--table-toolbar-settings__options">
+                    <Checkbox
+                      defaultChecked={handleDefaultChecked(header)}
+                      onClick={(event) =>
+                        handleChangeHeader(event, header, index)
+                      }
+                      labelText={header.header}
+                      id={header.key}
+                    />
+                  </li>
+                ))}
+                <TableToolbarAction onClick={() => handleResetDefault()}>
+                  Reset to default
+                  <Restart20 />
+                </TableToolbarAction>
+              </TableToolbarMenu>
+              <Button
+                tabIndex={getBatchActionProps().shouldShowBatchActions ? -1 : 0}
                 size="small"
                 kind="primary"
+                className="bx--table-toolbar__button"
               >
-                Reload Table
+                Export Table
+                <Export20 />
               </Button>
             </TableToolbarContent>
           </TableToolbar>

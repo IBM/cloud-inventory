@@ -8,13 +8,14 @@
   width: 100%;
 }
 
+// Botao de Settings
+.bx--overflow-menu-options {
+  width: auto;
+}
+
 .bx--table-settings__title {
   @include carbon--type-style("productive-heading-01");
   padding: 1rem 1.25rem 0.5rem;
-}
-
-.bx--overflow-menu-options {
-  width: auto;
 }
 
 .bx--table-toolbar-settings__options {
@@ -25,7 +26,7 @@
   margin-top: 1rem;
 }
 
-.bx--overflow-menu-options button {
+.bx--table-toolbar-settings__button {
   display: flex;
   justify-content: space-between;
   max-width: 100%;
@@ -33,15 +34,16 @@
   background-color: $interactive-02;
 }
 
-.bx--overflow-menu-options button:hover {
+.bx--table-toolbar-settings__button:hover {
   color: #fff;
-  background-color: $interactive-02;
+  opacity: 0.9;
 }
 
-.bx--overflow-menu-options__option svg path {
+.bx--table-toolbar-settings__button svg path {
   fill: #fff;
 }
 
+// Botao de Export
 .bx--table-toolbar__button {
   display: flex;
   justify-content: space-around;

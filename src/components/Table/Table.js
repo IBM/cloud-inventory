@@ -94,7 +94,10 @@ const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
                     />
                   </li>
                 ))}
-                <TableToolbarAction onClick={() => handleResetDefault()}>
+                <TableToolbarAction
+                  className="bx--table-toolbar-settings__button"
+                  onClick={() => handleResetDefault()}
+                >
                   Reset to default
                   <Restart20 />
                 </TableToolbarAction>

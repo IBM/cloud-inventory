@@ -16,7 +16,7 @@ import {
   Button,
   Checkbox,
 } from "carbon-components-react";
-import { Renew32, Export20, Restart32, Restart20 } from "@carbon/icons-react";
+import { Renew32, Export20, Restart20 } from "@carbon/icons-react";
 const { ipcRenderer } = window.require("electron");
 
 const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
@@ -48,6 +48,14 @@ const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
     setTableHeader(defaultHeader);
   };
 
+  // Recarrega a tabela
+  const handleRefreshTable = () => {
+    eventArgs.credentials = JSON.parse(
+      sessionStorage.getItem("currentAccount")
+    );
+    ipcRenderer.send(eventName, eventArgs);
+  };
+
   return (
     <DataTable rows={rowData} headers={tableHader} isSortable>
       {({
@@ -71,10 +79,7 @@ const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
                 title="Refresh"
                 tabIndex={getBatchActionProps().shouldShowBatchActions ? -1 : 0}
                 onClick={() => {
-                  eventArgs.credentials = JSON.parse(
-                    sessionStorage.getItem("currentAccount")
-                  );
-                  ipcRenderer.send(eventName, eventArgs);
+                  handleRefreshTable();
                 }}
               />
 

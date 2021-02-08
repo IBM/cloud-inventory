@@ -15,6 +15,7 @@ function createWindow() {
     autoHideMenuBar: isDev ? false : true,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
     },
   });
 

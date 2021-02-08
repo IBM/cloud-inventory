@@ -1,0 +1,31 @@
+.bx--progress-step {
+  width: 50%;
+}
+
+.bx--progress-line {
+  width: 100%;
+}
+
+.bx--export--form {
+  margin-top: 2rem;
+}
+
+.bx--export--form__title {
+  @include carbon--type-style("productive-heading-01");
+  margin-bottom: 0.5rem;
+}
+
+.bx--export--form__path {
+  display: flex;
+}
+
+.bx--export--form__path button {
+  margin-left: 1rem;
+  height: 2.5rem;
+  min-height: 2.5rem;
+}
+
+.bx--export--form__options {
+  display: flex;
+  justify-content: space-around;
+}

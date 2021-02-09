@@ -39,7 +39,7 @@ ipcMain.on("virtual-server-vpc:requestApi", async (event, arg) => {
           tempData[index].created = `${month}/${day}/${year}`;
           tempData[index].flavor = e.profile.name;
           tempData[index].cpu = e.vcpu.count;
-          tempData[index].so = `${so[1]} ${so[2]} ${so[3]}`;
+          tempData[index].so = `${so[1]} ${so[2]}.${so[3]}`;
           tempData[index].status =
             e.status.charAt(0).toUpperCase() + e.status.slice(1);
           tempData[index].namevpc = e.vpc.name;

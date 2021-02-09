@@ -6,15 +6,15 @@
 
 <p align="center">
     <a href="https://cloud.ibm.com">
-		<img src="https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg?style=flat&logo=appveyor" alt="IBM Cloud">
+		<img src="https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg?style=flat" alt="IBM Cloud">
     </a>
     <a href="https://www.python.org">
 		<img src="https://img.shields.io/badge/platform-javascript-lightgrey.svg?style=flat%22%20alt=%22platform">
 	</a>
 	<a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
-		<img src="https://img.shields.io/badge/license-gpl3-blue.svg?style=flat&logo=appveyor" alt="GPL 3">
+		<img src="https://img.shields.io/badge/license-gpl3-blue.svg?style=flat" alt="GPL 3">
 	</a>
-	<img src="https://img.shields.io/badge/release-v0.1.0-red?style=flat&logo=appveyor">
+	<img src="https://img.shields.io/badge/release-v0.1.0-red?style=flat">
 </p>
 <p></p>
 <p align="center">

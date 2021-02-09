@@ -70,9 +70,11 @@ The plan for delivering new versions of Cloud Inventory [is described here](/doc
 Project|Build Status
 ---|---
 Virtual Server for Classic|![](https://img.shields.io/badge/status-ready-brightgreen)
-Virtual Servers for VPC|![](https://img.shields.io/badge/status-under%20development-purple)
-VPCs|![](https://img.shields.io/badge/status-under%20development-purple)
-Issues|![](https://img.shields.io/badge/issues-0-red)
+Virtual Servers for VPC|![](https://img.shields.io/badge/status-ready-brightgreen)
+VPCs|![](https://img.shields.io/badge/status-ready-brightgreen)
+Bare Metal|![](https://img.shields.io/badge/status-under%20development-purple)
+Gateway Appliances|![](https://img.shields.io/badge/status-under%20development-purple)
+Issues|![](https://img.shields.io/badge/issues-1-red)
 ---
 
 ## Creators

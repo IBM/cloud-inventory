@@ -1,0 +1,55 @@
+.bx--table-sort {
+  height: 3rem;
+}
+
+.bx--table-sort__flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+// Botao de Settings
+.bx--overflow-menu-options {
+  width: auto;
+}
+
+.bx--table-settings__title {
+  @include carbon--type-style("productive-heading-01");
+  padding: 1rem 1.25rem 0.5rem;
+}
+
+.bx--table-toolbar-settings__options {
+  padding: 0 1.25rem;
+}
+
+.bx--overflow-menu-options__option {
+  margin-top: 1rem;
+}
+
+.bx--table-toolbar-settings__button {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  color: #fff;
+  background-color: $interactive-02;
+}
+
+.bx--table-toolbar-settings__button:hover {
+  color: #fff;
+  opacity: 0.9;
+}
+
+.bx--table-toolbar-settings__button svg path {
+  fill: #fff;
+}
+
+// Botao de Export
+.bx--table-toolbar__button {
+  display: flex;
+  justify-content: space-around;
+  padding-right: 12px;
+}
+
+.bx--table-toolbar__button svg {
+  margin-left: 30px;
+}

@@ -1,0 +1,19 @@
+.bx--account--btn {
+  background-color: $ui-01;
+  color: $text-02;
+  width: 160px;
+}
+
+.bx--account--btn:hover {
+  background-color: $hover-ui;
+  color: $text-01;
+}
+
+.bx--account--btn--delete {
+  background-color: $support-01;
+  width: 160px;
+}
+
+.bx--account--btn--delete:hover {
+  background-color: $hover-danger;
+}

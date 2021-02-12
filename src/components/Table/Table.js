@@ -168,7 +168,7 @@ const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
           </TableContainer>
         )}
       </DataTable>
-      <ExportModal ref={formRef} />
+      <ExportModal rows={rowData} headers={headerData} ref={formRef} />
     </>
   );
 };

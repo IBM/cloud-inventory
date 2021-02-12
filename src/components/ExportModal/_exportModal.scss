@@ -6,11 +6,17 @@
   width: 100%;
 }
 
-.bx--export--form {
+.bx--export--form,
+.bx--export--status {
   margin-top: 2rem;
 }
 
-.bx--export--form__title {
+.bx--export--status {
+  padding-bottom: 0.5rem;
+}
+
+.bx--export--form__title,
+.bx--export--status__title {
   @include carbon--type-style("productive-heading-01");
   margin-bottom: 0.5rem;
 }

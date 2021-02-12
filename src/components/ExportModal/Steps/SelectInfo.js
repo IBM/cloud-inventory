@@ -5,7 +5,7 @@ const { dialog } = require("electron").remote;
 const os = window.require("os");
 
 const SelectInfo = forwardRef((props, ref) => {
-  const [exportPath, setExportPath] = useState(os.homedir());
+  const [exportPath, setExportPath] = useState(`${os.homedir()}/Desktop`);
   const [exportFormats, setExportFormats] = useState(Formats);
 
   // Funcao para selecionar o dir

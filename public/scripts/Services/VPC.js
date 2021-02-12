@@ -1,5 +1,6 @@
 const { ipcMain } = require("electron");
-const { iamApi, vpcApi } = require("../Helpers/Api");
+const { vpcApi } = require("../Helpers/Api");
+const { getToken } = require("../Helpers/IamToken");
 
 ipcMain.on("vpc-overview:requestApi", async (event, arg) => {
   console.log(arg.log);
@@ -8,17 +9,7 @@ ipcMain.on("vpc-overview:requestApi", async (event, arg) => {
     event.reply(arg.eventLoading);
   }
 
-  // Gera o Bearer Token
-  const token = await iamApi
-    .post(
-      `/token?grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey=${arg.credentials.cloudApiKey}`
-    )
-    .then((res) => {
-      return res.data.access_token;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const token = await getToken(arg.credentials.cloudApiKey);
 
   let data = [];
   // A API de VPC é dividida em um endpoint por regiao(dal, wds, lon...)

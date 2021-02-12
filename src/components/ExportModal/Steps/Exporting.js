@@ -3,14 +3,15 @@ import { InlineLoading } from "carbon-components-react";
 
 const { ipcRenderer } = window.require("electron");
 
-const ExportingModal = ({ rows, headers, exportInfo }) => {
+const ExportingModal = ({ title, headers, rows, exportInfo }) => {
   const [exportStatus, setExportStatus] = useState(exportInfo.formats);
 
   const handleExportEvent = async (name) => {
     const status = await ipcRenderer.invoke(`exporting:${name}`, {
-      exportInfo,
-      rows,
+      title,
       headers,
+      rows,
+      exportInfo,
     });
 
     setExportStatus(

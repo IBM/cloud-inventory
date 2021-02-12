@@ -92,8 +92,9 @@ const ExportModal = forwardRef((props, ref) => {
         {currentStep === 0 && <SelectInfo ref={selectInfoRef} />}
         {currentStep === 1 && (
           <Exporting
-            rows={props.rows}
+            title={props.title}
             headers={props.headers}
+            rows={props.rows}
             exportInfo={exportInfo}
           />
         )}

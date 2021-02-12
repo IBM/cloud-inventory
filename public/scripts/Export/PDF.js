@@ -1,13 +1,15 @@
 const { ipcMain } = require("electron");
 const fs = require("fs");
-const PDFDocument = require("./classe");
+const PDFDocument = require("./PdfTable");
+
 const handleCreatePDF = async (arg) => {
-  return new Promise((res, rej) => {
+  return new Promise((resolve, reject) => {
     const doc = new PDFDocument({
       layout: "landscape",
     });
-    //TABELA
-    doc.pipe(fs.createWriteStream(`${arg.exportInfo.path}`));
+    const fileName = `${arg.exportInfo.path}/${arg.title}.pdf`;
+    let stream = fs.createWriteStream(fileName);
+    doc.pipe(stream);
     const table = {
       headers: [],
       rows: [],
@@ -28,20 +30,25 @@ const handleCreatePDF = async (arg) => {
       prepareRow: (row, i) => doc.font("Helvetica").fontSize(7),
       width: 770,
     });
-
-    //doc.end();
-    res({ status: "finished" });
-    rej({ status: "error" });
+    doc.end();
+    resolve({ stream });
   });
 };
+
 ipcMain.handle("exporting:PDF", async (event, arg) => {
-  handleCreatePDF(arg)
-    .then((res) => {
-      console.log(res.status);
-      // return res.status;
+  return handleCreatePDF(arg)
+    .then(({ stream }) => {
+      stream.on("finish", () => {
+        return "finished";
+      });
+      stream.on("error", (err) => {
+        console.log(err);
+        stream.end();
+        return "error";
+      });
     })
     .catch((err) => {
-      console.log(err.status);
-      //return err.status;
+      console.log(err);
+      return "error";
     });
 });

@@ -7,7 +7,7 @@ const ExportingModal = ({ title, headers, rows, exportInfo }) => {
   const [exportStatus, setExportStatus] = useState(exportInfo.formats);
 
   const handleExportEvent = async (name) => {
-    const status = await ipcRenderer.invoke(`exporting:${name}`, {
+    const response = await ipcRenderer.invoke(`exporting:${name}`, {
       title,
       headers,
       rows,
@@ -17,7 +17,7 @@ const ExportingModal = ({ title, headers, rows, exportInfo }) => {
     setExportStatus(
       exportStatus.map((format) =>
         format.name === name
-          ? Object.defineProperty(format, "status", { value: status })
+          ? Object.defineProperty(format, "status", { value: response.status })
           : format
       )
     );

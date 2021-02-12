@@ -31,24 +31,23 @@ const handleCreatePDF = async (arg) => {
       width: 770,
     });
     doc.end();
-    resolve({ stream });
+    stream.on("finish", () => {
+      resolve({ status: "finished", msg: "Sucess" });
+    });
+    stream.on("error", (err) => {
+      console.log(err);
+      stream.end();
+      reject({ status: "error", msg: err });
+    });
   });
 };
 
 ipcMain.handle("exporting:PDF", async (event, arg) => {
   return handleCreatePDF(arg)
-    .then(({ stream }) => {
-      stream.on("finish", () => {
-        return "finished";
-      });
-      stream.on("error", (err) => {
-        console.log(err);
-        stream.end();
-        return "error";
-      });
+    .then((res) => {
+      return res;
     })
     .catch((err) => {
-      console.log(err);
-      return "error";
+      return err;
     });
 });

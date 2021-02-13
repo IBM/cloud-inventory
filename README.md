@@ -8,13 +8,15 @@
     <a href="https://cloud.ibm.com">
 		<img src="https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg" alt="IBM Cloud">
     </a>
-    <a href="https://www.python.org">
+    <a href="https://github.com/IBM/cloud-inventory">
 		<img src="https://img.shields.io/badge/platform-javascript-lightgrey.svg?style=flat%22%20alt=%22platform">
 	</a>
-	<a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
-		<img src="https://img.shields.io/badge/license-gpl3-blue.svg?style=flat" alt="GPL 3">
+	<a href="https://github.com/IBM/cloud-inventory/blob/main/LICENSE">
+		<img src="https://img.shields.io/github/license/ibm/cloud-inventory" alt="Repository License">
 	</a>
-	<img src="https://img.shields.io/badge/release-v0.1.0-red">
+  <a href="https://github.com/IBM/cloud-inventory/releases">
+		<img src="https://img.shields.io/github/v/release/ibm/cloud-inventory?include_prereleases" alt="Repository Release">
+	</a>
 </p>
 <p></p>
 <p align="center">

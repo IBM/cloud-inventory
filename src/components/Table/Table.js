@@ -18,9 +18,8 @@ import {
 } from "carbon-components-react";
 import { Renew32, Export20, Restart20 } from "@carbon/icons-react";
 import ExportModal from "../ExportModal";
-const { ipcRenderer } = window.require("electron");
 
-const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
+const MyTable = ({ title, rowData, headerData, refresh }) => {
   const [tableHader, setTableHeader] = useState(headerData);
   const [defaultHeader] = useState(headerData);
   const formRef = useRef(null);
@@ -52,10 +51,7 @@ const MyTable = ({ title, rowData, headerData, eventName, eventArgs }) => {
 
   // Recarrega a tabela
   const handleRefreshTable = () => {
-    eventArgs.credentials = JSON.parse(
-      sessionStorage.getItem("currentAccount")
-    );
-    ipcRenderer.send(eventName, eventArgs);
+    refresh();
   };
 
   // Abre o modal responsavel por

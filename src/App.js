@@ -5,6 +5,7 @@ import { Content } from "carbon-components-react/lib/components/UIShell";
 
 //Import dos componentes
 import Header from "./components/Header";
+import Notification from "./components/Notifications";
 
 //Import das paginas
 import Home from "./pages/Home";
@@ -59,6 +60,7 @@ const App = () => {
   return (
     <div className="app">
       <Header accounts={accounts} />
+      <Notification />
       <Content>
         <Switch>
           <Route exact path="/" component={Home} />

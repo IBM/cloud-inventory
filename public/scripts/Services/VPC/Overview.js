@@ -1,6 +1,6 @@
 const { ipcMain } = require("electron");
-const { vpcApi } = require("../Helpers/Api");
-const { getToken } = require("../Helpers/IamToken");
+const { vpcApi } = require("../../Helpers/Api");
+const { getToken } = require("../../Helpers/IamToken");
 
 ipcMain.handle("vpc-overview:requestApi", async (event, arg) => {
   const token = await getToken(arg.credentials.cloudApiKey);

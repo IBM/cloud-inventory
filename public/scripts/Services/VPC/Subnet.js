@@ -1,6 +1,6 @@
 const { ipcMain } = require("electron");
-const { vpcApi } = require("../Helpers/Api");
-const { getToken } = require("../Helpers/IamToken");
+const { vpcApi } = require("../../Helpers/Api");
+const { getToken } = require("../../Helpers/IamToken");
 
 ipcMain.handle("subnet-vpc:requestApi", async (event, arg) => {
   console.log("Requesting Subnet data from API");

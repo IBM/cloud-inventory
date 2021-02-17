@@ -1,6 +1,6 @@
 const { ipcMain } = require("electron");
-const { vpcApi } = require("../Helpers/Api");
-const { getToken } = require("../Helpers/IamToken");
+const { vpcApi } = require("../../Helpers/Api");
+const { getToken } = require("../../Helpers/IamToken");
 
 ipcMain.handle("virtual-server-vpc:requestApi", async (event, arg) => {
   console.log("Requesting VPC Virtual Server data from API");

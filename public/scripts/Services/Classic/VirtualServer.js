@@ -1,5 +1,5 @@
 const { ipcMain } = require("electron");
-const { classicApi } = require("../Helpers/Api");
+const { classicApi } = require("../../Helpers/Api");
 
 ipcMain.handle("virtual-server-classic:requestApi", (event, arg) => {
   console.log("Requesting Classic Virtual Server data from API");

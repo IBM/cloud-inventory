@@ -13,15 +13,15 @@ const headers = [
   },
 
   {
-    key: "ipv4_cidr_block",
+    key: "ipRange",
     header: "IP range",
   },
   {
-    key: "gateway",
-    header: "Plublic Gateway",
+    key: "publicGateway",
+    header: "Public Gateway",
   },
   {
-    key: "total_ipv4_address_count",
+    key: "availableIp",
     header: "Available IP",
   },
   {

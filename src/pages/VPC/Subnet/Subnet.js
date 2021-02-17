@@ -9,22 +9,18 @@ const Subnet = () => {
   const [rows, setRows] = useState([]);
   const [loadingTable, setLoadingTable] = useState(true);
 
-  useEffect(() => {
-    ipcRenderer.send("subnet-vpc:requestApi", {
-      log: "Requesting Subnet data from API",
+  const handleFetchData = async () => {
+    setLoadingTable(true);
+    const res = await ipcRenderer.invoke("subnet-vpc:requestApi", {
       credentials: JSON.parse(sessionStorage.getItem("currentAccount")),
     });
-  }, []);
-
-  ipcRenderer.on("subnet-vpc:loading-table", (event, arg) => {
-    setLoadingTable(true);
-  });
-
-  ipcRenderer.on("subnet-vpc:receiving-data", (event, arg) => {
-    console.log(arg);
-    setRows(arg);
+    setRows(res);
     setLoadingTable(false);
-  });
+  };
+
+  useEffect(() => {
+    handleFetchData();
+  }, []);
 
   return (
     <>
@@ -33,10 +29,8 @@ const Subnet = () => {
           title="Subnet"
           headerData={Headers}
           rowData={rows}
-          eventName="subnet-vpc:requestApi"
-          eventArgs={{
-            log: "Requesting Subnet data from API",
-            eventLoading: "subnet-vpc:loading-table",
+          refresh={() => {
+            handleFetchData();
           }}
         />
       )}

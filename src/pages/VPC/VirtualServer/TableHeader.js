@@ -1,6 +1,6 @@
 const headers = [
   {
-    key: "id",
+    key: "instanceId",
     header: "Instance ID",
   },
   {
@@ -16,11 +16,11 @@ const headers = [
     header: "Flavor",
   },
   {
-    key: "cpu",
+    key: "vcpu",
     header: "vCPU",
   },
   {
-    key: "memory",
+    key: "ram",
     header: "RAM",
   },
   {
@@ -32,11 +32,11 @@ const headers = [
     header: "Operating System",
   },
   {
-    key: "namevpc",
+    key: "vpcName",
     header: "VPC Name",
   },
   {
-    key: "privateip",
+    key: "privateIp",
     header: "Private IP",
   },
   {

@@ -9,22 +9,18 @@ const VirtualServer = () => {
   const [rows, setRows] = useState([]);
   const [loadingTable, setLoadingTable] = useState(true);
 
-  useEffect(() => {
-    ipcRenderer.send("virtual-server-vpc:requestApi", {
-      log: "Requesting VPC Virtual Server data from API",
+  const handleFetchData = async () => {
+    setLoadingTable(true);
+    const res = await ipcRenderer.invoke("virtual-server-vpc:requestApi", {
       credentials: JSON.parse(sessionStorage.getItem("currentAccount")),
     });
-  }, []);
-
-  ipcRenderer.on("virtual-server-vpc:loading-table", (event, arg) => {
-    setLoadingTable(true);
-  });
-
-  ipcRenderer.on("virtual-server-vpc:receiving-data", (event, arg) => {
-    console.log(arg);
-    setRows(arg);
+    setRows(res);
     setLoadingTable(false);
-  });
+  };
+
+  useEffect(() => {
+    handleFetchData();
+  }, []);
 
   return (
     <>
@@ -33,14 +29,12 @@ const VirtualServer = () => {
           title="VPC Virtual Server"
           headerData={Headers}
           rowData={rows}
-          eventName="virtual-server-vpc:requestApi"
-          eventArgs={{
-            log: "Requesting VPC Virtual Server data from API",
-            eventLoading: "virtual-server-vpc:loading-table",
+          refresh={() => {
+            handleFetchData();
           }}
         />
       )}
-      {loadingTable && <DataTableSkeleton headers={Headers} rowCount={11} />}
+      {loadingTable && <DataTableSkeleton headers={Headers} rowCount={20} />}
     </>
   );
 };

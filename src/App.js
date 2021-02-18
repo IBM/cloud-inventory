@@ -14,6 +14,9 @@ import Accounts from "./pages/Accounts";
 import VirtualServerClassic from "./pages/Classic/VirtualServerClassic";
 import BareMetal from "./pages/Classic/BareMetal";
 import GatewayAppliance from "./pages/Classic/GatewayAppliance";
+import FileStorage from "./pages/Classic/FileStorage";
+import BlockStorage from "./pages/Classic/BlockStorage";
+import ObjectStorage from "./pages/Classic/ObjectStorage";
 // VPC
 import VPC from "./pages/VPC/Overview";
 import VirtualServerVPC from "./pages/VPC/VirtualServer";
@@ -71,6 +74,15 @@ const App = () => {
           <PrivateRoute path="/classic/vsi" component={VirtualServerClassic} />
           <PrivateRoute path="/classic/bm" component={BareMetal} />
           <PrivateRoute path="/classic/gateway" component={GatewayAppliance} />
+          <PrivateRoute path="/classic/storage/file" component={FileStorage} />
+          <PrivateRoute
+            path="/classic/storage/block"
+            component={BlockStorage}
+          />
+          <PrivateRoute
+            path="/classic/storage/object"
+            component={ObjectStorage}
+          />
           <PrivateRoute path="/vpc/overview" component={VPC} />
           <PrivateRoute path="/vpc/vsi" component={VirtualServerVPC} />
           <PrivateRoute path="/vpc/subnet" component={SubnetVPC} />

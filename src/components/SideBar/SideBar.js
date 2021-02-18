@@ -14,6 +14,10 @@ import {
   VirtualPrivateCloud32,
   Network_232,
   Home32,
+  ModelAlt32,
+  ObjectStorage32,
+  CopyFile32,
+  Archive32,
 } from "@carbon/icons-react";
 
 const SideBar = () => {
@@ -61,6 +65,46 @@ const SideBar = () => {
               Gateway Appliance
             </SideNavLink>
           </Link>
+          {/* Bug */}
+          <SideNavMenu
+            title="Storage"
+            renderIcon={Archive32}
+            className="bx--side-nav__submenu-t1"
+            defaultExpanded={defaultExpanded}
+            isActive={location.includes("/classic/storage") ? true : false}
+          >
+            <Link to="/classic/storage/file">
+              <SideNavLink
+                renderIcon={CopyFile32}
+                aria-current={
+                  location.includes("/classic/storage/file") ? "page" : ""
+                }
+              >
+                File Storage
+              </SideNavLink>
+            </Link>
+            <Link to="/classic/storage/block">
+              <SideNavLink
+                renderIcon={ModelAlt32}
+                aria-current={
+                  location.includes("/classic/storage/block") ? "page" : ""
+                }
+              >
+                Block Storage
+              </SideNavLink>
+            </Link>
+            <Link to="/classic/storage/object">
+              <SideNavLink
+                renderIcon={ObjectStorage32}
+                aria-current={
+                  location.includes("/classic/storage/object") ? "page" : ""
+                }
+              >
+                Object Storage
+              </SideNavLink>
+            </Link>
+          </SideNavMenu>
+          {/* Bug */}
         </SideNavMenu>
         <SideNavMenu
           title="Virtual Private Cloud"

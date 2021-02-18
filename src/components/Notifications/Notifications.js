@@ -13,16 +13,16 @@ const Notifications = () => {
     <div className="bx--notification">
       {notification && (
         <ToastNotification
-          caption={notification.caption}
           iconDescription="Close notification"
+          title={notification.title}
           subtitle={
             <span kind={notification.kind}>{notification.description}</span>
           }
           timeout={5000}
+          caption={notification.caption}
           onCloseButtonClick={() => {
             setNotifications();
           }}
-          title={notification.title}
         />
       )}
     </div>

@@ -3,7 +3,14 @@ const { vpcApi } = require("../../Helpers/Api");
 const { getToken } = require("../../Helpers/IamToken");
 
 ipcMain.handle("vpc-overview:requestApi", async (event, arg) => {
-  const token = await getToken(arg.credentials.cloudApiKey);
+  // Gera um bearer token
+  const token = await getToken(event, arg.credentials.cloudApiKey);
+
+  // Caso o token nao seja gerado com sucesso
+  // o evento é encerrado sem fazer a requisicao
+  if (!token) {
+    return [];
+  }
 
   // A API de VPC é dividida em um endpoint por regiao(dal, wds, lon...)
   // criamos um loop para realizar a requisição de cada uma delas
@@ -51,8 +58,13 @@ ipcMain.handle("vpc-overview:requestApi", async (event, arg) => {
           };
         });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        event.sender.send("notification", {
+          kind: "error",
+          title: `Error ${error.response.status}: ${error.response.statusText}`,
+          description: error.response.data.errors[0].message,
+          caption: new Date().toLocaleTimeString(),
+        });
         return [];
       });
   });

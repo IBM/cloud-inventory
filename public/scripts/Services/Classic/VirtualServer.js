@@ -86,8 +86,13 @@ ipcMain.handle("virtual-server-classic:requestApi", (event, arg) => {
         };
       });
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      event.sender.send("notification", {
+        kind: "error",
+        title: `Error ${error.response.status}: ${error.response.statusText}`,
+        description: error.response.data.error,
+        caption: new Date().toLocaleTimeString(),
+      });
       return [];
     });
 });

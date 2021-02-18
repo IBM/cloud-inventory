@@ -6,7 +6,13 @@ ipcMain.handle("virtual-server-vpc:requestApi", async (event, arg) => {
   console.log("Requesting VPC Virtual Server data from API");
 
   // Gera um bearer token
-  const token = await getToken(arg.credentials.cloudApiKey);
+  const token = await getToken(event, arg.credentials.cloudApiKey);
+
+  // Caso o token nao seja gerado com sucesso
+  // o evento é encerrado sem fazer a requisicao
+  if (!token) {
+    return [];
+  }
 
   // A API de VPC é dividida em um endpoint por regiao(dal, wds, lon...)
   // criamos um loop para realizar a requisição de cada uma delas
@@ -64,7 +70,12 @@ ipcMain.handle("virtual-server-vpc:requestApi", async (event, arg) => {
         });
       })
       .catch((err) => {
-        console.log(err);
+        event.sender.send("notification", {
+          kind: "error",
+          title: `Error ${error.response.status}: ${error.response.statusText}`,
+          description: error.response.data.errors[0].message,
+          caption: new Date().toLocaleTimeString(),
+        });
         return [];
       });
   });

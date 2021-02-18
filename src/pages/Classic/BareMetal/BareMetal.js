@@ -9,21 +9,18 @@ const BareMetal = () => {
   const [rows, setRows] = useState([]);
   const [loadingTable, setLoadingTable] = useState(true);
 
-  useEffect(() => {
-    ipcRenderer.send("bare-metal:requestApi", {
-      log: "Requesting Bare Metal data from API",
+  const handleFetchData = async () => {
+    setLoadingTable(true);
+    const res = await ipcRenderer.invoke("bare-metal-classic:requestApi", {
       credentials: JSON.parse(sessionStorage.getItem("currentAccount")),
     });
-  }, []);
-
-  ipcRenderer.on("bare-metal:loading-table", (event, arg) => {
-    setLoadingTable(true);
-  });
-
-  ipcRenderer.on("bare-metal:receiving-data", (event, arg) => {
-    setRows(arg);
+    setRows(res);
     setLoadingTable(false);
-  });
+  };
+
+  useEffect(() => {
+    handleFetchData();
+  }, []);
 
   return (
     <>
@@ -32,10 +29,8 @@ const BareMetal = () => {
           title="Bare Metal"
           headerData={Headers}
           rowData={rows}
-          eventName="bare-metal:requestApi"
-          eventArgs={{
-            log: "Requesting Bare Metal data from API",
-            eventLoading: "bare-metal:loading-table",
+          refresh={() => {
+            handleFetchData();
           }}
         />
       )}

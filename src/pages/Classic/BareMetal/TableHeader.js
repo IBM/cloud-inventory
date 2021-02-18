@@ -12,12 +12,28 @@ const headers = [
     header: "Operating System",
   },
   {
-    key: "core",
+    key: "cores",
     header: "Cores",
   },
   {
     key: "ram",
     header: "RAM",
+  },
+  {
+    key: "storage",
+    header: "Storage",
+  },
+  {
+    key: "publicIp",
+    header: "Public IP",
+  },
+  {
+    key: "privateIp",
+    header: "Private IP",
+  },
+  {
+    key: "speed",
+    header: "Network Speed",
   },
   {
     key: "created",
@@ -27,10 +43,10 @@ const headers = [
     key: "billing",
     header: "Billing",
   },
-  {
+  /* {
     key: "status",
     header: "Status",
-  },
+  }, */
 ];
 
 module.exports = headers;

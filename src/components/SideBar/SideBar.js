@@ -53,6 +53,14 @@ const SideBar = () => {
               Bare Metal
             </SideNavLink>
           </Link>
+          <Link to="/classic/gateway">
+            <SideNavLink
+              renderIcon={Table32}
+              aria-current={location.includes("/classic/gateway") ? "page" : ""}
+            >
+              Gateway Appliance
+            </SideNavLink>
+          </Link>
         </SideNavMenu>
         <SideNavMenu
           title="Virtual Private Cloud"

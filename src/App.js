@@ -10,8 +10,11 @@ import Notification from "./components/Notifications";
 //Import das paginas
 import Home from "./pages/Home";
 import Accounts from "./pages/Accounts";
+// Classic Infra
 import VirtualServerClassic from "./pages/Classic/VirtualServerClassic";
 import BareMetal from "./pages/Classic/BareMetal";
+import GatewayAppliance from "./pages/Classic/GatewayAppliance";
+// VPC
 import VPC from "./pages/VPC/Overview";
 import VirtualServerVPC from "./pages/VPC/VirtualServer";
 import SubnetVPC from "./pages/VPC/Subnet";
@@ -67,6 +70,7 @@ const App = () => {
           <Route path="/accounts" component={Accounts} />
           <PrivateRoute path="/classic/vsi" component={VirtualServerClassic} />
           <PrivateRoute path="/classic/bm" component={BareMetal} />
+          <PrivateRoute path="/classic/gateway" component={GatewayAppliance} />
           <PrivateRoute path="/vpc/overview" component={VPC} />
           <PrivateRoute path="/vpc/vsi" component={VirtualServerVPC} />
           <PrivateRoute path="/vpc/subnet" component={SubnetVPC} />

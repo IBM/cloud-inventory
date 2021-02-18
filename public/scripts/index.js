@@ -7,6 +7,7 @@ module.exports = require("./Export/PDF");
 // Classic Infra Imports
 module.exports = require("./Services/Classic/VirtualServer");
 module.exports = require("./Services/Classic/BareMetal");
+module.exports = require("./Services/Classic/GatewayAppliance");
 
 // VPC Imports
 module.exports = require("./Services/VPC/Overview");

@@ -15,6 +15,13 @@ const classicApi = axios.default.create({
   },
 });
 
+const resourceControllerApi = axios.default.create({
+  baseURL: "https://resource-controller.cloud.ibm.com/v2/",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 const vpcApi = [
   //US South (Dallas)
   {
@@ -78,4 +85,4 @@ const vpcApi = [
   },
 ];
 
-module.exports = { iamApi, classicApi, vpcApi };
+module.exports = { iamApi, classicApi, vpcApi, resourceControllerApi };

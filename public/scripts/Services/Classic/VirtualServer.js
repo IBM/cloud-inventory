@@ -17,7 +17,7 @@ ipcMain.handle("virtual-server-classic:requestApi", (event, arg) => {
     .then((response) => {
       const virtualServers = response.data;
 
-      // Mapei e trata a resposta da api
+      // Mapeia e trata a resposta da api
       return virtualServers.map((virtualServer, index) => {
         // A data de criacao vai ser exibida no formato xx/xx/xxxx,
         // Para isso precisamos splitar o formato em que ela vem

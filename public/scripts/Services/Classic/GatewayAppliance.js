@@ -8,7 +8,7 @@ ipcMain.handle("gateway-appliance:requestApi", (event, arg) => {
 
   return classicApi
     .get(
-      'https://api.softlayer.com/rest/v3.1/SoftLayer_Account/getHardware.json?objectMask=mask[datacenter,hardDrives,networkVlans,primaryBackendNetworkComponent,processorPhysicalCoreAmount,operatingSystem,memoryCapacity,networkGatewayMemberFlag,hourlyBillingFlag]&objectFilter={"hardware":{"hardwareFunction":{"code":{"operation":"WEBSVR"}},"networkGatewayMemberFlag":{"operation":1}}}',
+      '/SoftLayer_Account/getHardware.json?objectMask=mask[datacenter,hardDrives,networkVlans,primaryBackendNetworkComponent,processorPhysicalCoreAmount,operatingSystem,memoryCapacity,networkGatewayMemberFlag,hourlyBillingFlag]&objectFilter={"hardware":{"hardwareFunction":{"code":{"operation":"WEBSVR"}},"networkGatewayMemberFlag":{"operation":1}}}',
       {
         auth: {
           username: arg.credentials.userNameApi,

@@ -8,6 +8,7 @@ module.exports = require("./Export/PDF");
 module.exports = require("./Services/Classic/VirtualServer");
 module.exports = require("./Services/Classic/BareMetal");
 module.exports = require("./Services/Classic/GatewayAppliance");
+module.exports = require("./Services/Classic/BlockStorage");
 
 // VPC Imports
 module.exports = require("./Services/VPC/Overview");

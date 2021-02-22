@@ -9,6 +9,7 @@ module.exports = require("./Services/Classic/VirtualServer");
 module.exports = require("./Services/Classic/BareMetal");
 module.exports = require("./Services/Classic/GatewayAppliance");
 module.exports = require("./Services/Classic/BlockStorage");
+module.exports = require("./Services/Classic/FileStorage");
 
 // VPC Imports
 module.exports = require("./Services/VPC/Overview");

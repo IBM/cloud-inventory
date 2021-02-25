@@ -16,7 +16,7 @@ const classicApi = axios.default.create({
 });
 
 const resourceControllerApi = axios.default.create({
-  baseURL: "https://resource-controller.cloud.ibm.com/v2/",
+  baseURL: "https://resource-controller.cloud.ibm.com",
   headers: {
     "Content-Type": "application/json",
   },

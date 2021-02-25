@@ -22,6 +22,13 @@ const resourceControllerApi = axios.default.create({
   },
 });
 
+const s3Api = axios.default.create({
+  baseURL: "https://s3.us.cloud-object-storage.appdomain.cloud",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 const vpcApi = [
   //US South (Dallas)
   {
@@ -85,4 +92,4 @@ const vpcApi = [
   },
 ];
 
-module.exports = { iamApi, classicApi, vpcApi, resourceControllerApi };
+module.exports = { iamApi, classicApi, vpcApi, resourceControllerApi, s3Api };

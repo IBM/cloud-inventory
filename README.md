@@ -75,6 +75,7 @@ Bare Metal|![](https://img.shields.io/badge/status-ready-brightgreen)
 Gateway Appliances|![](https://img.shields.io/badge/status-ready-brightgreen)
 Object Storage|![](https://img.shields.io/badge/status-under%20development-purple)
 Export all resources|![](https://img.shields.io/badge/status-under%20development-purple)
+Save infos on a Database|![](https://img.shields.io/badge/status-under%20development-purple)
 Issues|![](https://img.shields.io/badge/issues-1-red)
 ---
 

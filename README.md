@@ -14,7 +14,7 @@
 	<a href="https://github.com/IBM/cloud-inventory/blob/main/LICENSE">
 		<img src="https://img.shields.io/github/license/ibm/cloud-inventory" alt="Repository License">
 	</a>
-  <a href="https://github.com/IBM/cloud-inventory/releases">
+	<a href="https://github.com/IBM/cloud-inventory/releases">
 		<img src="https://img.shields.io/github/v/release/ibm/cloud-inventory?include_prereleases" alt="Repository Release">
 	</a>
 </p>
@@ -71,11 +71,10 @@ The plan for delivering new versions of Cloud Inventory [is described here](/doc
 
 Project|Build Status
 ---|---
-Virtual Server for Classic|![](https://img.shields.io/badge/status-ready-brightgreen)
-Virtual Servers for VPC|![](https://img.shields.io/badge/status-ready-brightgreen)
-VPCs|![](https://img.shields.io/badge/status-ready-brightgreen)
-Bare Metal|![](https://img.shields.io/badge/status-under%20development-purple)
-Gateway Appliances|![](https://img.shields.io/badge/status-under%20development-purple)
+Bare Metal|![](https://img.shields.io/badge/status-ready-brightgreen)
+Gateway Appliances|![](https://img.shields.io/badge/status-ready-brightgreen)
+Object Storage|![](https://img.shields.io/badge/status-under%20development-purple)
+Export all resources|![](https://img.shields.io/badge/status-under%20development-purple)
 Issues|![](https://img.shields.io/badge/issues-1-red)
 ---
 

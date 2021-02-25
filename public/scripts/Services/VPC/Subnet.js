@@ -56,7 +56,7 @@ ipcMain.handle("subnet-vpc:requestApi", async (event, arg) => {
           };
         });
       })
-      .catch((err) => {
+      .catch((error) => {
         event.sender.send("notification", {
           kind: "error",
           title: `Error ${error.response.status}: ${error.response.statusText}`,

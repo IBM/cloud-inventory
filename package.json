@@ -12,6 +12,7 @@
     "carbon-icons": "7.0.7",
     "electron-is-dev": "^1.2.0",
     "electron-log": "^4.3.1",
+    "excel4node": "^1.7.2",
     "pdfkit": "^0.11.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

@@ -1,7 +1,7 @@
 module.exports = require("./Account/AddAcount");
 module.exports = require("./Account/GetAccounts");
 module.exports = require("./Helpers/Archive");
-module.exports = require("./Export/Excel");
+module.exports = require("./Export/Excel/Export");
 module.exports = require("./Export/PDF");
 
 // Classic Infra Imports

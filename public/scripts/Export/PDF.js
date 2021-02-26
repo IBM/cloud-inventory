@@ -7,7 +7,7 @@ const handleCreatePDF = async (arg) => {
     const doc = new PDFDocument({
       layout: "landscape",
     });
-    const fileName = `${arg.exportInfo.path}/${arg.title}.pdf`;
+    const fileName = `${arg.exportInfo.path}/cinventory-export.pdf`;
     let stream = fs.createWriteStream(fileName);
     doc.pipe(stream);
     const table = {
@@ -15,13 +15,15 @@ const handleCreatePDF = async (arg) => {
       rows: [],
     };
 
-    arg.headers.forEach((header) => {
-      table.headers.push([header.header]);
-    });
-    arg.rows.forEach((row, index) => {
-      table.rows.push([]);
-      arg.headers.forEach((header) => {
-        table.rows[index].push(row[header.key]);
+    arg.data.map((exporting) => {
+      exporting.headers.forEach((header) => {
+        table.headers.push([header.header]);
+      });
+      exporting.rows.forEach((row, index) => {
+        table.rows.push([]);
+        exporting.headers.forEach((header) => {
+          table.rows[index].push(row[header.key]);
+        });
       });
     });
 

@@ -16,7 +16,7 @@ const Menus = [
     title: "Classic Infrastructure",
     path: "/classic/",
     icon: DataBase32,
-    dropdown: [
+    dropdowns: [
       {
         title: "Virtual Server",
         path: "/classic/vsi",
@@ -38,7 +38,7 @@ const Menus = [
     title: "Virtual Private Cloud",
     path: "/vpc/",
     icon: VirtualPrivateCloudAlt32,
-    dropdown: [
+    dropdowns: [
       {
         title: "VPCs",
         path: "/vpc/overview",
@@ -60,7 +60,7 @@ const Menus = [
     title: "Storages",
     path: "/storage/",
     icon: Archive32,
-    dropdown: [
+    dropdowns: [
       {
         title: "Classic - File Storage",
         path: "/storage/classicfile",

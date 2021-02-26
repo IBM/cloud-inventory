@@ -33,14 +33,16 @@ const SideBar = () => {
               defaultExpanded={defaultExpanded}
               isActive={location.includes(menu.path) ? true : false}
             >
-              {menu.dropdown.map((a) => {
+              {menu.dropdowns.map((dropdown) => {
                 return (
-                  <Link to={a.path}>
+                  <Link to={dropdown.path}>
                     <SideNavLink
-                      renderIcon={a.icon}
-                      aria-current={location.includes(a.path) ? "page" : ""}
+                      renderIcon={dropdown.icon}
+                      aria-current={
+                        location.includes(dropdown.path) ? "page" : ""
+                      }
                     >
-                      {a.title}
+                      {dropdown.title}
                     </SideNavLink>
                   </Link>
                 );

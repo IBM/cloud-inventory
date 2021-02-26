@@ -20,6 +20,24 @@ hr {
   margin: 0.75rem 0.8125rem;
 }
 
-.bx--side-nav__submenu-t1 .bx--side-nav__icon {
-  padding-left: 1rem;
+.bx--side-nav__navigation {
+  justify-content: space-between;
+  height: auto;
+}
+
+.bx--side-nav__items {
+  flex: none;
+  padding: 0;
+}
+
+.bx--side-nav__items:hover {
+  cursor: pointer;
+}
+
+.bx--side-nav__items-top {
+  padding-top: 1rem;
+}
+
+.bx--side-nav__items-bottom {
+  padding-bottom: 1rem;
 }

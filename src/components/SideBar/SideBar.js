@@ -6,7 +6,7 @@ import {
   SideNavItems,
   SideNavLink,
 } from "carbon-components-react/lib/components/UIShell";
-import { Home32 } from "@carbon/icons-react";
+import { Home32, DocumentExport32 } from "@carbon/icons-react";
 
 import Menus from "./SideMenus";
 
@@ -14,8 +14,13 @@ const SideBar = () => {
   const location = useLocation().pathname;
   const defaultExpanded = location === "/" ? true : false;
   return (
-    <SideNav aria-label="Side navigation" isRail expanded={defaultExpanded}>
-      <SideNavItems>
+    <SideNav
+      aria-label="Side navigation"
+      className="teste"
+      isRail
+      expanded={defaultExpanded}
+    >
+      <SideNavItems className="bx--side-nav__items-top">
         <Link to="/">
           <SideNavLink
             renderIcon={Home32}
@@ -50,6 +55,17 @@ const SideBar = () => {
             </SideNavMenu>
           );
         })}
+      </SideNavItems>
+      <SideNavItems className="bx--side-nav__items-bottom">
+        <hr />
+        <SideNavLink
+          renderIcon={DocumentExport32}
+          onClick={() => {
+            console.log("click");
+          }}
+        >
+          Export All
+        </SideNavLink>
       </SideNavItems>
     </SideNav>
   );

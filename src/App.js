@@ -74,18 +74,12 @@ const App = () => {
           <PrivateRoute path="/classic/vsi" component={VirtualServerClassic} />
           <PrivateRoute path="/classic/bm" component={BareMetal} />
           <PrivateRoute path="/classic/gateway" component={GatewayAppliance} />
-          <PrivateRoute path="/classic/storage/file" component={FileStorage} />
-          <PrivateRoute
-            path="/classic/storage/block"
-            component={BlockStorage}
-          />
-          <PrivateRoute
-            path="/classic/storage/object"
-            component={ObjectStorage}
-          />
           <PrivateRoute path="/vpc/overview" component={VPC} />
           <PrivateRoute path="/vpc/vsi" component={VirtualServerVPC} />
           <PrivateRoute path="/vpc/subnet" component={SubnetVPC} />
+          <PrivateRoute path="/storage/classicfile" component={FileStorage} />
+          <PrivateRoute path="/storage/classicblock" component={BlockStorage} />
+          <PrivateRoute path="/storage/object" component={ObjectStorage} />
         </Switch>
       </Content>
     </div>

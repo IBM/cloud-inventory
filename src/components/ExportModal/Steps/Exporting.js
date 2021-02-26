@@ -8,10 +8,8 @@ const ExportingModal = ({ title, headers, rows, exportInfo }) => {
 
   const handleExportEvent = async (name) => {
     const response = await ipcRenderer.invoke(`exporting:${name}`, {
-      title,
-      headers,
-      rows,
       exportInfo,
+      data: [{ title, headers, rows }],
     });
 
     setExportStatus(

@@ -1,14 +1,12 @@
 const formats = [
   {
     name: "Excel",
-    defaultChecked: false,
-    currentExport: false,
+    export: false,
     status: "active",
   },
   {
     name: "PDF",
-    defaultChecked: false,
-    currentExport: false,
+    export: false,
     status: "active",
   },
 ];

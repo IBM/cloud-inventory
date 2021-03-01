@@ -17,7 +17,7 @@ import {
   Checkbox,
 } from "carbon-components-react";
 import { Renew32, Export20, Restart20 } from "@carbon/icons-react";
-import ExportModal from "../ExportModal";
+import SingleExport from "../SingleExport";
 
 const MyTable = ({ title, rowData, headerData, refresh }) => {
   const [tableHader, setTableHeader] = useState(headerData);
@@ -57,7 +57,7 @@ const MyTable = ({ title, rowData, headerData, refresh }) => {
   // Abre o modal responsavel por
   // exportar a tabela
   const handleExport = () => {
-    formRef.current.openExportModal();
+    formRef.current.openExport();
   };
 
   return (
@@ -164,7 +164,7 @@ const MyTable = ({ title, rowData, headerData, refresh }) => {
           </TableContainer>
         )}
       </DataTable>
-      <ExportModal
+      <SingleExport
         rows={rowData}
         headers={headerData}
         title={title}

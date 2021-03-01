@@ -1,12 +1,4 @@
-.bx--progress-step {
-  width: 50%;
-}
-
-.bx--progress-line {
-  width: 100%;
-}
-
-.bx--export--form,
+.bx--export--info,
 .bx--export--status {
   margin-top: 2rem;
 }
@@ -15,23 +7,24 @@
   padding-bottom: 0.5rem;
 }
 
-.bx--export--form__title,
+.bx--export--info__title,
 .bx--export--status__title {
   @include carbon--type-style("productive-heading-01");
   margin-bottom: 0.5rem;
 }
 
-.bx--export--form__path {
+.bx--export--info__path {
   display: flex;
 }
 
-.bx--export--form__path button {
+.bx--export--info__path button {
   margin-left: 1rem;
   height: 2.5rem;
   min-height: 2.5rem;
 }
 
-.bx--export--form__options {
-  display: flex;
-  justify-content: space-around;
+.bx--export--info__options,
+.bx--export--status__services {
+  display: grid;
+  grid-template-columns: auto auto;
 }

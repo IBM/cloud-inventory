@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Table from "../../../components/Table";
+import Table from "../../components/Table";
 import { DataTableSkeleton } from "carbon-components-react";
-import Headers from "./TableHeader";
 
 const { ipcRenderer } = window.require("electron");
 
-const ObjectStorage = ({ eventName }) => {
+const Services = ({ eventName, title, headers }) => {
   const [rows, setRows] = useState([]);
   const [loadingTable, setLoadingTable] = useState(true);
 
@@ -26,17 +25,17 @@ const ObjectStorage = ({ eventName }) => {
     <>
       {!loadingTable && (
         <Table
-          title="Object Storage"
-          headerData={Headers}
+          title={title}
+          headerData={headers}
           rowData={rows}
           refresh={() => {
             handleFetchData();
           }}
         />
       )}
-      {loadingTable && <DataTableSkeleton headers={Headers} rowCount={20} />}
+      {loadingTable && <DataTableSkeleton headers={headers} rowCount={20} />}
     </>
   );
 };
 
-export default ObjectStorage;
+export default Services;

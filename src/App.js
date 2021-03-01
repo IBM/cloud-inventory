@@ -10,8 +10,7 @@ import Notification from "./components/Notifications";
 //Import das paginas
 import Home from "./pages/Home";
 import Accounts from "./pages/Accounts";
-
-import Services from "./Services";
+import Categories from "./components/Categories";
 
 //Import do CSS
 import "./App.scss";
@@ -21,12 +20,23 @@ const { ipcRenderer } = window.require("electron");
 // Controle para as rotas
 // Se o usuario nao tiver nenhuma conta cadastrada no app
 // ele é redirecionado para a pagina /accounts
-const PrivateRoute = ({ component: Component, event, ...rest }) => (
+const PrivateRoute = ({
+  component: Component,
+  title,
+  headers,
+  event,
+  ...rest
+}) => (
   <Route
     {...rest}
     render={(props) =>
       sessionStorage.getItem("currentAccount") ? (
-        <Component {...props} eventName={event} />
+        <Component
+          {...props}
+          title={title}
+          headers={headers}
+          eventName={event}
+        />
       ) : (
         <Redirect
           to={{ pathname: "/accounts", state: { from: props.location } }}
@@ -62,13 +72,15 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/accounts" component={Accounts} />
-          {Services.map((service) => {
-            return service.dropdowns.map((route) => {
+          {Categories.map((category) => {
+            return category.services.map((service) => {
               return (
                 <PrivateRoute
-                  path={route.path}
-                  component={route.component}
-                  event={route.event}
+                  title={service.title}
+                  headers={service.headers}
+                  path={service.path}
+                  event={service.event}
+                  component={service.component}
                 />
               );
             });

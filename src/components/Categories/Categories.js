@@ -10,48 +10,53 @@ import {
   CopyFile32,
   Archive32,
 } from "@carbon/icons-react";
-// Classic Infra
-import VirtualServerClassic from "./pages/Classic/VirtualServerClassic";
-import BareMetal from "./pages/Classic/BareMetal";
-import GatewayAppliance from "./pages/Classic/GatewayAppliance";
-// VPC
-import VPC from "./pages/VPC/Overview";
-import VirtualServerVPC from "./pages/VPC/VirtualServer";
-import SubnetVPC from "./pages/VPC/Subnet";
-// Storage
-import FileStorageClassic from "./pages/Storage/FileStorageClassic";
-import BlockStorageClassic from "./pages/Storage/BlockStorageClassic";
-import ObjectStorage from "./pages/Storage/ObjectStorage";
 
-const Services = [
+import {
+  BareMetal,
+  GatewayAppliance,
+  VirtualServerClassic,
+  Overview,
+  VirtualServerVPC,
+  Subnet,
+  BlockStorageClassic,
+  FileStorageClassic,
+  ObjectStorage,
+} from "./TableHeaders";
+
+import ServicePage from "../../pages/Services";
+
+const Categories = [
   {
     title: "Classic Infrastructure",
     path: "/classic/",
     icon: DataBase32,
-    dropdowns: [
+    services: [
       {
         title: "Virtual Server",
         description: "Virtual Server for Classic",
         path: "/classic/vsi",
         icon: VirtualMachine32,
+        headers: VirtualServerClassic,
         event: "virtual-server-classic:requestApi",
-        component: VirtualServerClassic,
+        component: ServicePage,
       },
       {
         title: "Bare Metal",
         description: "Bare Metal",
         path: "/classic/bm",
         icon: Table32,
+        headers: BareMetal,
         event: "bare-metal-classic:requestApi",
-        component: BareMetal,
+        component: ServicePage,
       },
       {
         title: "Gateway Appliance",
         description: "Gateway Appliance",
         path: "/classic/gateway",
         icon: Table32,
+        headers: GatewayAppliance,
         event: "gateway-appliance:requestApi",
-        component: GatewayAppliance,
+        component: ServicePage,
       },
     ],
   },
@@ -59,30 +64,33 @@ const Services = [
     title: "Virtual Private Cloud",
     path: "/vpc/",
     icon: VirtualPrivateCloudAlt32,
-    dropdowns: [
+    services: [
       {
         title: "VPCs",
         description: "VPC Overview",
         path: "/vpc/overview",
         icon: VirtualPrivateCloud32,
+        headers: Overview,
         event: "vpc-overview:requestApi",
-        component: VPC,
+        component: ServicePage,
       },
       {
         title: "Virtual Server",
         description: "Virtual Server for VPC",
         path: "/vpc/vsi",
         icon: VirtualMachine32,
+        headers: VirtualServerVPC,
         event: "virtual-server-vpc:requestApi",
-        component: VirtualServerVPC,
+        component: ServicePage,
       },
       {
         title: "Subnet",
         description: "Subnet",
         path: "/vpc/subnet",
         icon: Network_232,
+        headers: Subnet,
         event: "subnet-vpc:requestApi",
-        component: SubnetVPC,
+        component: ServicePage,
       },
     ],
   },
@@ -90,33 +98,36 @@ const Services = [
     title: "Storages",
     path: "/storage/",
     icon: Archive32,
-    dropdowns: [
+    services: [
       {
         title: "File Storage (Classic Infra)",
         description: "File Storage for Classic",
         path: "/storage/classicfile",
         icon: CopyFile32,
+        headers: FileStorageClassic,
         event: "file-storage-classic:requestApi",
-        component: FileStorageClassic,
+        component: ServicePage,
       },
       {
         title: "Block Storage (Classic Infra)",
         description: "Block Storage for Classic",
         path: "/storage/classicblock",
         icon: ModelAlt32,
+        headers: BlockStorageClassic,
         event: "block-storage-classic:requestApi",
-        component: BlockStorageClassic,
+        component: ServicePage,
       },
       {
         title: "Object Storage",
         description: "Object Storage",
         path: "/storage/object",
         icon: ObjectStorage32,
+        headers: ObjectStorage,
         event: "object-storage:requestApi",
-        component: ObjectStorage,
+        component: ServicePage,
       },
     ],
   },
 ];
 
-export default Services;
+export default Categories;

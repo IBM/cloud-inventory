@@ -11,7 +11,7 @@ const wb = new excel.Workbook({
 });
 
 ipcMain.handle("exporting:Excel", async (event, arg) => {
-  const exportPath = `${arg.exportInfo.path}\\cinventory-export.xlsx`;
+  const exportPath = `${arg.info.path}\\cinventory-export.xlsx`;
   try {
     arg.data.map((exporting) => {
       // Cria um novo Worksheet com o nome do servico

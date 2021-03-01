@@ -7,7 +7,7 @@ const handleCreatePDF = async (arg) => {
     const doc = new PDFDocument({
       layout: "landscape",
     });
-    const fileName = `${arg.exportInfo.path}/cinventory-export.pdf`;
+    const fileName = `${arg.info.path}/cinventory-export.pdf`;
     let stream = fs.createWriteStream(fileName);
     doc.pipe(stream);
     const table = {

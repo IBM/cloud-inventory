@@ -31,6 +31,7 @@ const Services = [
     dropdowns: [
       {
         title: "Virtual Server",
+        description: "Virtual Server for Classic",
         path: "/classic/vsi",
         icon: VirtualMachine32,
         event: "virtual-server-classic:requestApi",
@@ -38,6 +39,7 @@ const Services = [
       },
       {
         title: "Bare Metal",
+        description: "Bare Metal",
         path: "/classic/bm",
         icon: Table32,
         event: "bare-metal-classic:requestApi",
@@ -45,6 +47,7 @@ const Services = [
       },
       {
         title: "Gateway Appliance",
+        description: "Gateway Appliance",
         path: "/classic/gateway",
         icon: Table32,
         event: "gateway-appliance:requestApi",
@@ -59,6 +62,7 @@ const Services = [
     dropdowns: [
       {
         title: "VPCs",
+        description: "VPC Overview",
         path: "/vpc/overview",
         icon: VirtualPrivateCloud32,
         event: "vpc-overview:requestApi",
@@ -66,6 +70,7 @@ const Services = [
       },
       {
         title: "Virtual Server",
+        description: "Virtual Server for VPC",
         path: "/vpc/vsi",
         icon: VirtualMachine32,
         event: "virtual-server-vpc:requestApi",
@@ -73,6 +78,7 @@ const Services = [
       },
       {
         title: "Subnet",
+        description: "Subnet",
         path: "/vpc/subnet",
         icon: Network_232,
         event: "subnet-vpc:requestApi",
@@ -87,6 +93,7 @@ const Services = [
     dropdowns: [
       {
         title: "File Storage (Classic Infra)",
+        description: "File Storage for Classic",
         path: "/storage/classicfile",
         icon: CopyFile32,
         event: "file-storage-classic:requestApi",
@@ -94,6 +101,7 @@ const Services = [
       },
       {
         title: "Block Storage (Classic Infra)",
+        description: "Block Storage for Classic",
         path: "/storage/classicblock",
         icon: ModelAlt32,
         event: "block-storage-classic:requestApi",
@@ -101,6 +109,7 @@ const Services = [
       },
       {
         title: "Object Storage",
+        description: "Object Storage",
         path: "/storage/object",
         icon: ObjectStorage32,
         event: "object-storage:requestApi",

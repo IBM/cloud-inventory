@@ -3,15 +3,16 @@ const excel = require("excel4node");
 const createWsHeader = require("./wsHeader");
 const createWsTable = require("./wsTable");
 
-const wb = new excel.Workbook({
-  defaultFont: {
-    size: 12,
-    name: "IBM Plex Sans",
-  },
-});
-
 ipcMain.handle("exporting:Excel", async (event, arg) => {
-  const exportPath = `${arg.info.path}\\cinventory-export.xlsx`;
+  const wb = new excel.Workbook({
+    defaultFont: {
+      size: 12,
+      name: "IBM Plex Sans",
+    },
+  });
+
+  const timestamp = new Date().getTime();
+  const exportPath = `${arg.info.path}\\cinventory-export-${timestamp}.xlsx`;
   try {
     arg.data.map((exporting) => {
       // Cria um novo Worksheet com o nome do servico
@@ -28,6 +29,7 @@ ipcMain.handle("exporting:Excel", async (event, arg) => {
     wb.write(exportPath);
     return { status: "finished", msg: "Success" };
   } catch (err) {
+    console.log(err);
     event.sender.send("notification", {
       kind: "error",
       title: "Error exporting data",

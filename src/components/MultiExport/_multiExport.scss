@@ -1,0 +1,20 @@
+.bx--export--services {
+  margin-top: 2rem;
+}
+
+.bx--export--services__title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.bx--export--services__options,
+.bx--export--status__services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 1rem;
+}

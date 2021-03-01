@@ -1,4 +1,4 @@
-const {
+import {
   DataBase32,
   VirtualMachine32,
   Table32,
@@ -9,7 +9,7 @@ const {
   ObjectStorage32,
   CopyFile32,
   Archive32,
-} = require("@carbon/icons-react");
+} from "@carbon/icons-react";
 // Classic Infra
 import VirtualServerClassic from "./pages/Classic/VirtualServerClassic";
 import BareMetal from "./pages/Classic/BareMetal";

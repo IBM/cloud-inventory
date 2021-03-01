@@ -38,6 +38,7 @@ const Categories = [
         icon: VirtualMachine32,
         headers: VirtualServerClassic,
         event: "virtual-server-classic:requestApi",
+        status: "active",
         component: ServicePage,
       },
       {
@@ -47,6 +48,7 @@ const Categories = [
         icon: Table32,
         headers: BareMetal,
         event: "bare-metal-classic:requestApi",
+        status: "active",
         component: ServicePage,
       },
       {
@@ -56,6 +58,7 @@ const Categories = [
         icon: Table32,
         headers: GatewayAppliance,
         event: "gateway-appliance:requestApi",
+        status: "active",
         component: ServicePage,
       },
     ],
@@ -72,6 +75,7 @@ const Categories = [
         icon: VirtualPrivateCloud32,
         headers: Overview,
         event: "vpc-overview:requestApi",
+        status: "active",
         component: ServicePage,
       },
       {
@@ -81,6 +85,7 @@ const Categories = [
         icon: VirtualMachine32,
         headers: VirtualServerVPC,
         event: "virtual-server-vpc:requestApi",
+        status: "active",
         component: ServicePage,
       },
       {
@@ -90,6 +95,7 @@ const Categories = [
         icon: Network_232,
         headers: Subnet,
         event: "subnet-vpc:requestApi",
+        status: "active",
         component: ServicePage,
       },
     ],
@@ -106,6 +112,7 @@ const Categories = [
         icon: CopyFile32,
         headers: FileStorageClassic,
         event: "file-storage-classic:requestApi",
+        status: "active",
         component: ServicePage,
       },
       {
@@ -115,6 +122,7 @@ const Categories = [
         icon: ModelAlt32,
         headers: BlockStorageClassic,
         event: "block-storage-classic:requestApi",
+        status: "active",
         component: ServicePage,
       },
       {
@@ -124,6 +132,7 @@ const Categories = [
         icon: ObjectStorage32,
         headers: ObjectStorage,
         event: "object-storage:requestApi",
+        status: "active",
         component: ServicePage,
       },
     ],

@@ -5,13 +5,13 @@ import Headers from "./TableHeader";
 
 const { ipcRenderer } = window.require("electron");
 
-const GatewayAppliance = () => {
+const GatewayAppliance = ({ eventName }) => {
   const [rows, setRows] = useState([]);
   const [loadingTable, setLoadingTable] = useState(true);
 
-  const handleFetchData = async () => {
+  const handleFetchData = async (eventName) => {
     setLoadingTable(true);
-    const res = await ipcRenderer.invoke("gateway-appliance:requestApi", {
+    const res = await ipcRenderer.invoke(eventName, {
       credentials: JSON.parse(sessionStorage.getItem("currentAccount")),
     });
     setRows(res);
@@ -19,8 +19,8 @@ const GatewayAppliance = () => {
   };
 
   useEffect(() => {
-    handleFetchData();
-  }, []);
+    handleFetchData(eventName);
+  }, [eventName]);
 
   return (
     <>

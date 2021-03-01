@@ -21,12 +21,12 @@ const { ipcRenderer } = window.require("electron");
 // Controle para as rotas
 // Se o usuario nao tiver nenhuma conta cadastrada no app
 // ele é redirecionado para a pagina /accounts
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, event, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
       sessionStorage.getItem("currentAccount") ? (
-        <Component {...props} />
+        <Component {...props} eventName={event} />
       ) : (
         <Redirect
           to={{ pathname: "/accounts", state: { from: props.location } }}
@@ -65,7 +65,11 @@ const App = () => {
           {Services.map((service) => {
             return service.dropdowns.map((route) => {
               return (
-                <PrivateRoute path={route.path} component={route.component} />
+                <PrivateRoute
+                  path={route.path}
+                  component={route.component}
+                  event={route.event}
+                />
               );
             });
           })}

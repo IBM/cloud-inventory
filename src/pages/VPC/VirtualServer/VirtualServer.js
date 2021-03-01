@@ -5,13 +5,13 @@ import Headers from "./TableHeader";
 
 const { ipcRenderer } = window.require("electron");
 
-const VirtualServer = () => {
+const VirtualServer = ({ eventName }) => {
   const [rows, setRows] = useState([]);
   const [loadingTable, setLoadingTable] = useState(true);
 
-  const handleFetchData = async () => {
+  const handleFetchData = async (eventName) => {
     setLoadingTable(true);
-    const res = await ipcRenderer.invoke("virtual-server-vpc:requestApi", {
+    const res = await ipcRenderer.invoke(eventName, {
       credentials: JSON.parse(sessionStorage.getItem("currentAccount")),
     });
     setRows(res);
@@ -19,8 +19,8 @@ const VirtualServer = () => {
   };
 
   useEffect(() => {
-    handleFetchData();
-  }, []);
+    handleFetchData(eventName);
+  }, [eventName]);
 
   return (
     <>

@@ -7,8 +7,7 @@ import {
   SideNavLink,
 } from "carbon-components-react/lib/components/UIShell";
 import { Home32, DocumentExport32 } from "@carbon/icons-react";
-
-import Menus from "./SideMenus";
+import Services from "../../Services";
 
 const SideBar = () => {
   const location = useLocation().pathname;
@@ -30,7 +29,7 @@ const SideBar = () => {
           </SideNavLink>
         </Link>
         <hr />
-        {Menus.map((menu) => {
+        {Services.map((menu) => {
           return (
             <SideNavMenu
               title={menu.title}

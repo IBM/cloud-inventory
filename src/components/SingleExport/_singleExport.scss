@@ -9,7 +9,8 @@
 
 .bx--export--info__title,
 .bx--export--status__title {
-  @include carbon--type-style("productive-heading-01");
+  font-size: 0.875rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
 }
 

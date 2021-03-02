@@ -17,13 +17,14 @@ const SingleExport = forwardRef((props, ref) => {
   const [exports, setExports] = useState({});
   const [infoStepInvalid, setInfoStepInvalid] = useState(false);
   const infoRef = useRef(null);
+  const statusRef = useRef(null);
 
   const steps = [
     {
       label: "1. Select Info",
       description: "Step 1: Select the info to export your data",
       invalid: infoStepInvalid,
-      primaryButtonText: "Next",
+      primaryButtonText: "Export",
       primaryButton: () => {
         const isValid = infoRef.current.validate();
         if (isValid) {
@@ -47,6 +48,9 @@ const SingleExport = forwardRef((props, ref) => {
       secondaryButton: () => {
         handleCloseExport();
       },
+      requestClose: () => {
+        handleCloseExport();
+      },
       component: <Info ref={infoRef} />,
     },
     {
@@ -54,13 +58,13 @@ const SingleExport = forwardRef((props, ref) => {
       description: "Step 2: Status of your export",
       invalid: false,
       passive: true,
-      primaryButton: () => {
-        handleCloseExport();
+      requestClose: () => {
+        if (statusRef.current.closable) {
+          statusRef.current.resetStatus();
+          handleCloseExport();
+        }
       },
-      secondaryButton: () => {
-        setCurrentStep(currentStep - 1);
-      },
-      component: <Status exports={exports} />,
+      component: <Status ref={statusRef} exports={exports} />,
     },
   ];
 
@@ -72,6 +76,7 @@ const SingleExport = forwardRef((props, ref) => {
   // Funcao para fechar o export
   const handleCloseExport = () => {
     setOpen(false);
+    setCurrentStep(0);
   };
 
   // Exporta funcoes deste componente como referencia
@@ -88,14 +93,12 @@ const SingleExport = forwardRef((props, ref) => {
         hasForm
         open={open}
         modalHeading="Exporting Data"
-        primaryButtonText="Export"
-        secondaryButtonText="Cancel"
+        primaryButtonText={steps[currentStep].primaryButtonText}
+        secondaryButtonText={steps[currentStep].secondaryButtonText}
         passiveModal={steps[currentStep].passive}
         onRequestSubmit={steps[currentStep].primaryButton}
         onSecondarySubmit={steps[currentStep].secondaryButton}
-        onRequestClose={() => {
-          handleCloseExport();
-        }}
+        onRequestClose={steps[currentStep].requestClose}
       >
         <ProgressIndicator spaceEqually currentIndex={currentStep}>
           {steps.map((step) => (

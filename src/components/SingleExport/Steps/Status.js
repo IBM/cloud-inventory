@@ -1,11 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import { InlineLoading } from "carbon-components-react";
 const { ipcRenderer } = window.require("electron");
 
-const Status = ({ exports }) => {
+const Status = forwardRef(({ exports }, ref) => {
   const [status, setStatus] = useState(exports.info.formats);
+  const [closable, setClosable] = useState(true);
 
   const handleExportEvent = async (name) => {
+    setClosable(false);
     const response = await ipcRenderer.invoke(`exporting:${name}`, exports);
 
     setStatus(
@@ -15,6 +22,7 @@ const Status = ({ exports }) => {
           : format
       )
     );
+    setClosable(true);
   };
 
   useEffect(() => {
@@ -24,6 +32,21 @@ const Status = ({ exports }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Exporta funcoes deste componente como referencia
+  // para serem usada em outros componentes
+  useImperativeHandle(ref, () => {
+    return {
+      closable: closable,
+      resetStatus: () => {
+        setStatus(
+          status.map((format) =>
+            Object.defineProperty(format, "status", { value: "active" })
+          )
+        );
+      },
+    };
+  });
 
   return (
     <div>
@@ -46,6 +69,6 @@ const Status = ({ exports }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Status;

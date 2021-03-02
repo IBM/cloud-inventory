@@ -1,5 +1,6 @@
 module.exports = require("./Account/AddAcount");
 module.exports = require("./Account/GetAccounts");
+module.exports = require("./Account/DeleteAccount");
 module.exports = require("./Helpers/Archive");
 module.exports = require("./Export/Excel/Export");
 module.exports = require("./Export/PDF");

@@ -15,8 +15,8 @@ import {
   ModalWrapper,
   Button,
 } from "carbon-components-react";
-
 import AccountForm from "../AccountForm";
+const { ipcRenderer } = window.require("electron");
 
 const AccountTable = ({ title, rowData, headerData }) => {
   const formRef = useRef(null);
@@ -91,6 +91,22 @@ const AccountTable = ({ title, rowData, headerData }) => {
                           modalHeading="Deleting Account"
                           buttonTriggerClassName="bx--account--btn--delete"
                           primaryButtonText="Delete"
+                          handleSubmit={async () => {
+                            console.log("AA");
+                            const res = await ipcRenderer.invoke(
+                              "account:delete",
+                              {
+                                accountName: row.cells[0].value,
+                                userNameApi: row.cells[1].value,
+                                classicApiKey: row.cells[2].value,
+                                cloudApiKey: row.cells[3].value,
+                              }
+                            );
+
+                            if (res) {
+                              window.location.reload();
+                            }
+                          }}
                         >
                           <div>
                             Are you sure you want to delete this account

@@ -58,6 +58,32 @@ const MyTable = ({ title, rowData, headerData, refresh, expansion }) => {
     refresh();
   };
 
+  const handleExpansionCards = (rowId) => {
+    const currentRow = rowData.find((row) => row.id === rowId);
+    return (
+      <div className="bx--table-expansion">
+        {currentRow.expansion.title}
+        <div className="bx--table-expansion__cards">
+          {currentRow.expansion.rows.length !== 0
+            ? currentRow.expansion.rows.map((row) => {
+                return (
+                  <div className="bx--table-expansion__card">
+                    {currentRow.expansion.headers.map((header) => {
+                      return (
+                        <div>
+                          {header.name}: {row[header.key]}
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })
+            : "There is no data to display"}
+        </div>
+      </div>
+    );
+  };
+
   // Abre o modal responsavel por
   // exportar a tabela
   const handleExport = () => {
@@ -167,7 +193,7 @@ const MyTable = ({ title, rowData, headerData, refresh, expansion }) => {
                     </TableType>
                     {expansion && row.isExpanded && (
                       <TableExpandedRow colSpan={headers.length + 1}>
-                        <p>Aux squad rules</p>
+                        {handleExpansionCards(row.id)}
                       </TableExpandedRow>
                     )}
                   </React.Fragment>

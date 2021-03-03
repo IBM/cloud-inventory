@@ -24,8 +24,11 @@ ipcMain.handle("file-storage-classic:requestApi", (event, arg) => {
         const [date, hour] = fileStorage.createDate.split("T"); // 2019-08-06T07:36:25-07:00
         const [year, day, month] = date.split("-"); // 2019-08-06
 
+        // Define a qtd de bytes usados pelo storage
+        let usage = fileStorage.bytesUsed ? fileStorage.bytesUsed : 0;
+
         // Divide a qtd de bytes usada para ter o valor em GB
-        let usage = fileStorage.bytesUsed / 1000000000;
+        usage = usage / 1000000000;
 
         // Converte a qtd usada de GB para %
         usage = (100 * usage) / fileStorage.capacityGb;
@@ -43,6 +46,9 @@ ipcMain.handle("file-storage-classic:requestApi", (event, arg) => {
         // Verifica qual o tier do storage para saber a qtd de iops
         let iops;
         switch (fileStorage.storageTierLevel) {
+          case "LOW_INTENSITY_TIER":
+            iops = 0.25;
+            break;
           case "READHEAVY_TIER":
             iops = 2;
             break;

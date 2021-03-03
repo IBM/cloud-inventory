@@ -25,6 +25,7 @@ const PrivateRoute = ({
   title,
   headers,
   event,
+  expansion,
   ...rest
 }) => (
   <Route
@@ -36,6 +37,7 @@ const PrivateRoute = ({
           title={title}
           headers={headers}
           eventName={event}
+          expansion={expansion}
         />
       ) : (
         <Redirect
@@ -80,6 +82,7 @@ const App = () => {
                   headers={service.headers}
                   path={service.path}
                   event={service.event}
+                  expansion={service.expansion}
                   component={service.component}
                 />
               );

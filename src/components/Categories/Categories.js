@@ -113,6 +113,7 @@ const Categories = [
         headers: FileStorageClassic,
         event: "file-storage-classic:requestApi",
         status: "active",
+        expansion: true,
         component: ServicePage,
       },
       {
@@ -123,6 +124,7 @@ const Categories = [
         headers: BlockStorageClassic,
         event: "block-storage-classic:requestApi",
         status: "active",
+        expansion: true,
         component: ServicePage,
       },
       {

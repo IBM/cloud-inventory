@@ -4,7 +4,7 @@ import { DataTableSkeleton } from "carbon-components-react";
 
 const { ipcRenderer } = window.require("electron");
 
-const Services = ({ eventName, title, headers }) => {
+const Services = ({ eventName, title, headers, expansion }) => {
   const [rows, setRows] = useState([]);
   const [loadingTable, setLoadingTable] = useState(true);
 
@@ -28,6 +28,7 @@ const Services = ({ eventName, title, headers }) => {
           title={title}
           headerData={headers}
           rowData={rows}
+          expansion={expansion}
           refresh={() => {
             handleFetchData();
           }}

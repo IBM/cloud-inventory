@@ -5,7 +5,10 @@ import {
   Table,
   TableHead,
   TableRow,
+  TableExpandRow,
+  TableExpandedRow,
   TableHeader,
+  TableExpandHeader,
   TableBody,
   TableCell,
   TableToolbar,
@@ -19,10 +22,11 @@ import {
 import { Renew32, Export20, Restart20 } from "@carbon/icons-react";
 import SingleExport from "../SingleExport";
 
-const MyTable = ({ title, rowData, headerData, refresh }) => {
+const MyTable = ({ title, rowData, headerData, refresh, expansion }) => {
   const [tableHader, setTableHeader] = useState(headerData);
   const [defaultHeader] = useState(headerData);
   const formRef = useRef(null);
+  const TableType = expansion ? TableExpandRow : TableRow;
 
   // Define se o checkbox vem checked por padrao
   const handleDefaultChecked = (header) => {
@@ -68,6 +72,7 @@ const MyTable = ({ title, rowData, headerData, refresh }) => {
           headers,
           getHeaderProps,
           getRowProps,
+          getTableProps,
           getBatchActionProps,
           onInputChange,
         }) => (
@@ -134,9 +139,10 @@ const MyTable = ({ title, rowData, headerData, refresh }) => {
                 </Button>
               </TableToolbarContent>
             </TableToolbar>
-            <Table>
+            <Table {...getTableProps()}>
               <TableHead>
                 <TableRow>
+                  {expansion && <TableExpandHeader />}
                   {headers.map((header) => (
                     <TableHeader {...getHeaderProps({ header })}>
                       {header.header}
@@ -146,18 +152,25 @@ const MyTable = ({ title, rowData, headerData, refresh }) => {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <TableRow {...getRowProps({ row })}>
-                    {row.cells.map((cell) => (
-                      <TableCell key={cell.id}>
-                        {typeof cell.value === "string" &&
-                        cell.value.includes("<br>")
-                          ? cell.value.split("<br>").map((value) => {
-                              return <p>{value}</p>;
-                            })
-                          : cell.value}
-                      </TableCell>
-                    ))}
-                  </TableRow>
+                  <React.Fragment key={row.id}>
+                    <TableType {...getRowProps({ row })}>
+                      {row.cells.map((cell) => (
+                        <TableCell key={cell.id}>
+                          {typeof cell.value === "string" &&
+                          cell.value.includes("<br>")
+                            ? cell.value.split("<br>").map((value) => {
+                                return <p>{value}</p>;
+                              })
+                            : cell.value}
+                        </TableCell>
+                      ))}
+                    </TableType>
+                    {expansion && row.isExpanded && (
+                      <TableExpandedRow colSpan={headers.length + 1}>
+                        <p>Aux squad rules</p>
+                      </TableExpandedRow>
+                    )}
+                  </React.Fragment>
                 ))}
               </TableBody>
             </Table>

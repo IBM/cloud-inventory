@@ -36,12 +36,58 @@ ipcMain.handle("file-storage-classic:requestApi", (event, arg) => {
         // Arredonda para 2 casas decimais
         usage = `${Math.floor(usage * 100) / 100}%`;
 
-        // Soma a qtd de hosts authorizados
-        const authorizedHosts =
-          fileStorage.allowedSubnets.length +
-          fileStorage.allowedVirtualGuests.length +
-          fileStorage.allowedHardware.length +
-          fileStorage.allowedIpAddresses.length;
+        // Mapeia os hosts autorizados
+        let authorizedHosts = 0;
+        let expansion = {
+          title: "Authorized Hosts:",
+          headers: [
+            {
+              key: "deviceType",
+              name: "Device Type",
+            },
+            {
+              key: "deviceName",
+              name: "Device Name",
+            },
+            {
+              key: "ipAddress",
+              name: "IP Address",
+            },
+          ],
+          rows: [],
+        };
+
+        authorizedHosts += fileStorage.allowedVirtualGuests.length;
+        fileStorage.allowedVirtualGuests.forEach((virtualGuest) => {
+          expansion.rows.push({
+            deviceType: "Virtual Server",
+            deviceName: virtualGuest.fullyQualifiedDomainName,
+            ipAddress: virtualGuest.primaryBackendIpAddress,
+          });
+        });
+
+        authorizedHosts += fileStorage.allowedHardware.length;
+        fileStorage.allowedHardware.forEach((hardware) => {
+          expansion.rows.push(hardware);
+        });
+
+        authorizedHosts += fileStorage.allowedSubnets.length;
+        fileStorage.allowedSubnets.forEach((subnet) => {
+          expansion.rows.push({
+            deviceType: "Subnet",
+            deviceName: "-",
+            ipAddress: subnet.networkIdentifier,
+          });
+        });
+
+        authorizedHosts += fileStorage.allowedIpAddresses.length;
+        fileStorage.allowedIpAddresses.forEach((ipAddress) => {
+          expansion.rows.push({
+            deviceType: "IP Address",
+            deviceName: "-",
+            ipAddress: ipAddress.ipAddress,
+          });
+        });
 
         // Verifica qual o tier do storage para saber a qtd de iops
         let iops;
@@ -96,6 +142,7 @@ ipcMain.handle("file-storage-classic:requestApi", (event, arg) => {
           created: `${month}/${day}/${year}`,
           snapshotCapacity,
           authorizedHosts,
+          expansion,
           snapshots,
           maxIops,
           type,

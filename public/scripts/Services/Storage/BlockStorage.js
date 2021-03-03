@@ -62,12 +62,58 @@ ipcMain.handle("block-storage-classic:requestApi", (event, arg) => {
           maxIops = `${blockStorage.provisionedIops}IOPS`;
         }
 
-        // Soma a qtd de hosts authorizados
-        const authorizedHosts =
-          blockStorage.allowedSubnets.length +
-          blockStorage.allowedVirtualGuests.length +
-          blockStorage.allowedHardware.length +
-          blockStorage.allowedIpAddresses.length;
+        // Mapeia os hosts autorizados
+        let authorizedHosts = 0;
+        let expansion = {
+          title: "Authorized Hosts:",
+          headers: [
+            {
+              key: "deviceType",
+              name: "Device Type",
+            },
+            {
+              key: "deviceName",
+              name: "Device Name",
+            },
+            {
+              key: "ipAddress",
+              name: "IP Address",
+            },
+          ],
+          rows: [],
+        };
+
+        authorizedHosts += blockStorage.allowedVirtualGuests.length;
+        blockStorage.allowedVirtualGuests.forEach((virtualGuest) => {
+          expansion.rows.push({
+            deviceType: "Virtual Server",
+            deviceName: virtualGuest.fullyQualifiedDomainName,
+            ipAddress: virtualGuest.primaryBackendIpAddress,
+          });
+        });
+
+        authorizedHosts += blockStorage.allowedHardware.length;
+        blockStorage.allowedHardware.forEach((hardware) => {
+          expansion.rows.push(hardware);
+        });
+
+        authorizedHosts += blockStorage.allowedSubnets.length;
+        blockStorage.allowedSubnets.forEach((subnet) => {
+          expansion.rows.push({
+            deviceType: "Subnet",
+            deviceName: "-",
+            ipAddress: subnet.networkIdentifier,
+          });
+        });
+
+        authorizedHosts += blockStorage.allowedIpAddresses.length;
+        blockStorage.allowedIpAddresses.forEach((ipAddress) => {
+          expansion.rows.push({
+            deviceType: "IP Address",
+            deviceName: "-",
+            ipAddress: ipAddress.ipAddress,
+          });
+        });
 
         // Define a capacidade de snapshot
         const snapshotCapacity = blockStorage.snapshotCapacityGb
@@ -89,6 +135,7 @@ ipcMain.handle("block-storage-classic:requestApi", (event, arg) => {
           snapshotCapacity,
           authorizedHosts,
           targetAdress,
+          expansion,
           snapshots,
           maxIops,
           type,

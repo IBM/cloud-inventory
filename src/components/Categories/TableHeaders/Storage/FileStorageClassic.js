@@ -12,41 +12,43 @@ const headers = [
     header: "Type",
   },
   {
-    key: "iops",
+    key: "maxIops",
     header: "Max IOPS",
   },
   {
     key: "capacity",
-    header: "Capacity (Gb)",
+    header: "Capacity",
   },
   {
     key: "usage",
-    header: "Usage (Gb)",
+    header: "Usage",
   },
   {
     key: "snapshots",
     header: "Snapshots",
   },
   {
-    key: "snapcapacity",
+    key: "snapshotCapacity",
     header: "Snapshot Capacity",
   },
   {
-    key: "hosts",
+    key: "authorizedHosts",
     header: "Authorized Hosts",
   },
   {
-    key: "point",
+    key: "mountPoint",
     header: "Mount Point",
   },
   {
     key: "created",
     header: "Created",
   },
+  /*
   {
     key: "status",
     header: "Status",
   },
+  */
 ];
 
 module.exports = headers;

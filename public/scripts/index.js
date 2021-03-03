@@ -9,11 +9,13 @@ module.exports = require("./Export/PDF");
 module.exports = require("./Services/Classic/VirtualServer");
 module.exports = require("./Services/Classic/BareMetal");
 module.exports = require("./Services/Classic/GatewayAppliance");
-module.exports = require("./Services/Classic/BlockStorage");
-module.exports = require("./Services/Classic/FileStorage");
-module.exports = require("./Services/Classic/ObjectStorage");
 
 // VPC Imports
 module.exports = require("./Services/VPC/Overview");
 module.exports = require("./Services/VPC/VirtualServer");
 module.exports = require("./Services/VPC/Subnet");
+
+// Storage Imports
+module.exports = require("./Services/Storage/BlockStorage");
+module.exports = require("./Services/Storage/FileStorage");
+module.exports = require("./Services/Storage/ObjectStorage");

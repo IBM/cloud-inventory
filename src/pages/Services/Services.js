@@ -30,7 +30,7 @@ const Services = ({ eventName, title, headers, expansion }) => {
           rowData={rows}
           expansion={expansion}
           refresh={() => {
-            handleFetchData();
+            handleFetchData(eventName);
           }}
         />
       )}

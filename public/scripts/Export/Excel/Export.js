@@ -12,7 +12,7 @@ ipcMain.handle("exporting:Excel", async (event, arg) => {
   });
 
   const timestamp = new Date().getTime();
-  const exportPath = `${arg.info.path}\\cinventory-export-${timestamp}.xlsx`;
+  const exportPath = `${arg.info.path}/cinventory-export-${timestamp}.xlsx`;
   try {
     arg.data.map((exporting) => {
       // Cria um novo Worksheet com o nome do servico

@@ -2,6 +2,7 @@ const { ipcMain } = require("electron");
 const { getToken } = require("../../Helpers/IamToken");
 const { getResources } = require("../../Helpers/Resources");
 const { resourceControllerApi, s3Api } = require("../../Helpers/Api");
+const axios = require("axios");
 const convert = require("xml-js");
 
 ipcMain.handle("object-storage:requestApi", async (event, arg) => {
@@ -54,7 +55,7 @@ ipcMain.handle("object-storage:requestApi", async (event, arg) => {
 
     // Requisicao para pegar os buckets
     let buckets = s3Api
-      .get("", {
+      .get("/?extended", {
         headers: {
           authorization: `Bearer ${token}`,
           "ibm-service-instance-id": objectStorage.id,
@@ -91,10 +92,75 @@ ipcMain.handle("object-storage:requestApi", async (event, arg) => {
     resourceGroup = await Promise.resolve(resourceGroup);
     buckets = await Promise.resolve(buckets);
 
-    // Define quantos buckets,
-    // buckets = undefined => 0
-    // buckets.length = undefined => 1
     const bucketsCount = buckets ? (buckets.length ? buckets.length : 1) : 0;
+    let expansion = {
+      title: "Buckets:",
+      headers: [
+        {
+          key: "name",
+          name: "Name",
+        },
+        /*  {
+          key: "publicAccess",
+          name: "Public Access",
+        }, */
+        {
+          key: "location",
+          name: "Location",
+        },
+        {
+          key: "storageClass",
+          name: "Storage Class",
+        },
+        {
+          key: "created",
+          name: "Created",
+        },
+      ],
+      rows: [],
+    };
+
+    if (buckets !== undefined) {
+      if (!Array.isArray(buckets)) {
+        buckets = [buckets];
+      }
+
+      buckets.map(async (bucket) => {
+        // A data de criacao vai ser exibida no formato xx/xx/xxxx,
+        // Para isso precisamos splitar o formato em que ela vem
+        const [date, hour] = bucket.CreationDate._text.split("T"); // 2019-08-06T07:36:25-07:00
+        const [year, day, month] = date.split("-"); // 2019-08-06
+
+        const locationConstraint = bucket.LocationConstraint._text.split("-");
+
+        let storageClass = locationConstraint.pop();
+        let location = locationConstraint.join("-");
+        switch (storageClass) {
+          case "smart":
+            storageClass = "Smart Tier";
+            break;
+          case "standard":
+            storageClass = "Standard";
+            break;
+          case "cold":
+            storageClass = "Cold Vault";
+            break;
+          case "vault":
+            storageClass = "Vault";
+            break;
+          default:
+            console.log(storageClass);
+        }
+
+        expansion.rows.push({
+          name: bucket.Name._text,
+          publicAccess: "",
+          created: `${month}/${day}/${year}`,
+          storageClass,
+          location,
+        });
+      });
+    }
 
     // Object Storage Tratado
     return {
@@ -102,6 +168,7 @@ ipcMain.handle("object-storage:requestApi", async (event, arg) => {
       name: objectStorage.name,
       resourceGroup,
       bucketsCount,
+      expansion,
       location,
       status,
     };

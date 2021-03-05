@@ -135,6 +135,7 @@ const Categories = [
         headers: ObjectStorage,
         event: "object-storage:requestApi",
         status: "active",
+        expansion: true,
         component: ServicePage,
       },
     ],

@@ -28,6 +28,31 @@ const ExportStatus = forwardRef(({ exports, services }, ref) => {
       rows: response,
     });
 
+    let hasExpansion = false;
+
+    const expansionRows = [];
+    let expansionHeaders = "";
+    let expasionTitle = "";
+
+    response.forEach((row) => {
+      if (row.expansion) {
+        hasExpansion = true;
+        if (expansionHeaders === "") expansionHeaders = row.expansion.headers;
+        if (expasionTitle === "") expasionTitle = row.expansion.title;
+        row.expansion.rows.forEach((row) => {
+          expansionRows.push(row);
+        });
+      }
+    });
+
+    if (hasExpansion) {
+      tempExportData.data.push({
+        title: expasionTitle,
+        headers: expansionHeaders,
+        rows: expansionRows,
+      });
+    }
+
     setExportData(tempExportData);
 
     setServicesStatus(

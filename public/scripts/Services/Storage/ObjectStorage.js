@@ -2,7 +2,6 @@ const { ipcMain } = require("electron");
 const { getToken } = require("../../Helpers/IamToken");
 const { getResources } = require("../../Helpers/Resources");
 const { resourceControllerApi, s3Api } = require("../../Helpers/Api");
-const axios = require("axios");
 const convert = require("xml-js");
 
 ipcMain.handle("object-storage:requestApi", async (event, arg) => {
@@ -94,11 +93,15 @@ ipcMain.handle("object-storage:requestApi", async (event, arg) => {
 
     const bucketsCount = buckets ? (buckets.length ? buckets.length : 1) : 0;
     let expansion = {
-      title: "Buckets:",
+      title: "Object - Buckets",
       headers: [
         {
+          key: "storageName",
+          header: "Storage Name",
+        },
+        {
           key: "name",
-          name: "Name",
+          header: "Name",
         },
         /*  {
           key: "publicAccess",
@@ -106,15 +109,15 @@ ipcMain.handle("object-storage:requestApi", async (event, arg) => {
         }, */
         {
           key: "location",
-          name: "Location",
+          header: "Location",
         },
         {
           key: "storageClass",
-          name: "Storage Class",
+          header: "Storage Class",
         },
         {
           key: "created",
-          name: "Created",
+          header: "Created",
         },
       ],
       rows: [],
@@ -153,6 +156,7 @@ ipcMain.handle("object-storage:requestApi", async (event, arg) => {
         }
 
         expansion.rows.push({
+          storageName: objectStorage.name,
           name: bucket.Name._text,
           publicAccess: "",
           created: `${month}/${day}/${year}`,

@@ -13,7 +13,37 @@ const Status = forwardRef(({ exports }, ref) => {
 
   const handleExportEvent = async (name) => {
     setClosable(false);
-    const response = await ipcRenderer.invoke(`exporting:${name}`, exports);
+    const tempExportData = exports;
+
+    let hasExpansion = false;
+
+    const expansionRows = [];
+    let expansionHeaders = "";
+    let expasionTitle = "";
+
+    tempExportData.data[0].rows.forEach((row) => {
+      if (row.expansion) {
+        hasExpansion = true;
+        if (expansionHeaders === "") expansionHeaders = row.expansion.headers;
+        if (expasionTitle === "") expasionTitle = row.expansion.title;
+        row.expansion.rows.forEach((row) => {
+          expansionRows.push(row);
+        });
+      }
+    });
+
+    if (hasExpansion) {
+      tempExportData.data.push({
+        title: expasionTitle,
+        headers: expansionHeaders,
+        rows: expansionRows,
+      });
+    }
+
+    const response = await ipcRenderer.invoke(
+      `exporting:${name}`,
+      tempExportData
+    );
 
     setStatus(
       status.map((format) =>

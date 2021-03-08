@@ -65,19 +65,23 @@ ipcMain.handle("block-storage-classic:requestApi", (event, arg) => {
         // Mapeia os hosts autorizados
         let authorizedHosts = 0;
         let expansion = {
-          title: "Authorized Hosts:",
+          title: "Block - Authorized Hosts",
           headers: [
             {
+              key: "storageName",
+              header: "Storage Name",
+            },
+            {
               key: "deviceType",
-              name: "Device Type",
+              header: "Device Type",
             },
             {
               key: "deviceName",
-              name: "Device Name",
+              header: "Device Name",
             },
             {
               key: "ipAddress",
-              name: "IP Address",
+              header: "IP Address",
             },
           ],
           rows: [],
@@ -86,6 +90,7 @@ ipcMain.handle("block-storage-classic:requestApi", (event, arg) => {
         authorizedHosts += blockStorage.allowedVirtualGuests.length;
         blockStorage.allowedVirtualGuests.forEach((virtualGuest) => {
           expansion.rows.push({
+            storageName: blockStorage.username,
             deviceType: "Virtual Server",
             deviceName: virtualGuest.fullyQualifiedDomainName,
             ipAddress: virtualGuest.primaryBackendIpAddress,
@@ -100,6 +105,7 @@ ipcMain.handle("block-storage-classic:requestApi", (event, arg) => {
         authorizedHosts += blockStorage.allowedSubnets.length;
         blockStorage.allowedSubnets.forEach((subnet) => {
           expansion.rows.push({
+            storageName: blockStorage.username,
             deviceType: "Subnet",
             deviceName: "-",
             ipAddress: subnet.networkIdentifier,
@@ -109,6 +115,7 @@ ipcMain.handle("block-storage-classic:requestApi", (event, arg) => {
         authorizedHosts += blockStorage.allowedIpAddresses.length;
         blockStorage.allowedIpAddresses.forEach((ipAddress) => {
           expansion.rows.push({
+            storageName: blockStorage.username,
             deviceType: "IP Address",
             deviceName: "-",
             ipAddress: ipAddress.ipAddress,

@@ -106,7 +106,7 @@ const Categories = [
     icon: Archive32,
     services: [
       {
-        title: "File Storage (Classic Infra)",
+        title: "Classic File Storage",
         description: "File Storage for Classic",
         path: "/storage/classicfile",
         icon: CopyFile32,
@@ -117,7 +117,7 @@ const Categories = [
         component: ServicePage,
       },
       {
-        title: "Block Storage (Classic Infra)",
+        title: "Classic Block Storage",
         description: "Block Storage for Classic",
         path: "/storage/classicblock",
         icon: ModelAlt32,

@@ -57,7 +57,20 @@ const SingleExport = forwardRef((props, ref) => {
       label: "2. Export Status",
       description: "Step 2: Status of your export",
       invalid: false,
-      passive: true,
+      primaryButtonText: "Close",
+      primaryButton: () => {
+        if (statusRef.current.closable) {
+          statusRef.current.resetStatus();
+          handleCloseExport();
+        }
+      },
+      secondaryButtonText: "Restart",
+      secondaryButton: () => {
+        if (statusRef.current.closable) {
+          statusRef.current.resetStatus();
+          setCurrentStep(0);
+        }
+      },
       requestClose: () => {
         if (statusRef.current.closable) {
           statusRef.current.resetStatus();

@@ -70,7 +70,20 @@ const MultiExport = forwardRef((props, ref) => {
       label: "3. Export Status",
       description: "Step 3: Status of your export",
       invalid: false,
-      passive: true,
+      primaryButtonText: "Close",
+      primaryButton: () => {
+        if (statusRef.current.closable) {
+          statusRef.current.resetStatus();
+          handleCloseExport();
+        }
+      },
+      secondaryButtonText: "Restart",
+      secondaryButton: () => {
+        if (statusRef.current.closable) {
+          statusRef.current.resetStatus();
+          setCurrentStep(0);
+        }
+      },
       requestClose: () => {
         if (statusRef.current.closable) {
           statusRef.current.resetStatus();
@@ -108,7 +121,6 @@ const MultiExport = forwardRef((props, ref) => {
         hasForm
         modalHeading="Exporting Data"
         open={open}
-        passiveModal={steps[currentStep].passive}
         primaryButtonText={steps[currentStep].primaryButtonText}
         secondaryButtonText={steps[currentStep].secondaryButtonText}
         onRequestSubmit={steps[currentStep].primaryButton}

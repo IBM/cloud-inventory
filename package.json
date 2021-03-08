@@ -1,7 +1,7 @@
 {
   "name": "cloud-inventory",
   "description": "Export the inventory of your IBM Cloud resources to Excel or PDF files",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "license": "LGPL-2.1",
   "dependencies": {

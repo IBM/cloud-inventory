@@ -11,10 +11,10 @@
     <a href="https://www.python.org">
 		<img src="https://img.shields.io/badge/platform-javascript-lightgrey.svg?style=flat%22%20alt=%22platform">
 	</a>
-	<a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
-		<img src="https://img.shields.io/badge/license-gpl3-blue.svg?style=flat" alt="GPL 3">
+	<a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">
+		<img src="https://img.shields.io/badge/license-lgpl2.1-blue.svg?style=flat" alt="LGPL 2.1">
 	</a>
-	<img src="https://img.shields.io/badge/release-v0.1.0-red?style=flat">
+	<img src="https://img.shields.io/badge/release-v1.0.0-red?style=flat">
 </p>
 <p></p>
 <p align="center">
@@ -23,7 +23,7 @@
   <a href="http://cloudinventory.cloud"><strong>Cloud Inventory new version planning»</strong></a>
   <br>
   <br>
-  <a href="https://github.com/VSAlmeida/Cloud-Inventory/issues/new" target="_blank">Report bug</a>
+  <a href="https://github.com/IBM/cloud-inventory/issues/new" target="_blank">Report bug</a>
 </p>
 
 
@@ -37,15 +37,15 @@
 
 1. AWS Inventory
 2. Azure Inventory
-3.
-4.
+3. Google Cloud Inventory
+4. Oracle Cloud Inventory
 5. 
 
 
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read and contact us (Community Section) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/VSAlmeida/Cloud-Inventory/issues/new). If you prefer, contact us.
+Have a bug or a feature request? Please first read and contact us (Community Section) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/IBM/cloud-inventory/issues/new). If you prefer, contact us.
 
 ---
 

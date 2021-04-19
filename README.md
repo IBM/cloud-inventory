@@ -25,7 +25,7 @@
   <a href="http://cloudinventory.cloud"><strong>Discover Cloud Inventory »</strong></a>
   <br>
   <br>
-  <a href="https://github.com/VSAlmeida/Cloud-Inventory/issues/new" target="_blank">Report bug</a>
+  <a href="https://github.com/IBM/cloud-inventory/issues/new" target="_blank">Report bug</a>
 </p>
 
 
@@ -59,7 +59,7 @@
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read and contact us (Community Section) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/VSAlmeida/Cloud-Inventory/issues/new). If you prefer, contact us.
+Have a bug or a feature request? Please first read and contact us (Community Section) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/IBM/cloud-inventory/issues/new). If you prefer, contact us.
 
 ---
 

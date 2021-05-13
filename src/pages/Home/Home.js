@@ -1,6 +1,6 @@
 import React from "react";
 
-import Imagem from "../../images/cloudinvent.png";
+import Imagem from "../../images/17_23_p_gorodenkoff-043.jpg";
 
 const Home = () => {
   return (
